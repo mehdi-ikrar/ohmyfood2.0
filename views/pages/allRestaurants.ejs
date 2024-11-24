@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <%- include('../partials/head') %>
+    <body>
+        <%- include('../partials/header') %>
+        
+        <h1>Menu du restaurant <%= restaurant.name %></h1>
+        
+        <section class="section__menu">
+            <div class="menu__header">
+                <h2 class="menu__title"><%= restaurant.name %> - Menu</h2>
+                <i class="far fa-heart"></i>
+            </div>
+            <div class="menu__card__container">
+                <div class="menu__card__grope">
+                    <h3>ENTRÉES</h3>
+                    <% restaurant.menu.entrees.forEach(item => { %>
+                    <a href="#">
+                        <div class="menu__card">
+                            <div class="menu__card__description">
+                                <p class="menu__card__titledescription"><%= item.name %></p>
+                                <p class="menu__card__subdescription"><%= item.description %></p>
+                            </div>
+                            <div class="pricecheck">
+                                <p class="menu__card__price"><%= item.price %>€</p>
+                                <div class="menu__card__check">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <% }) %>
+                </div>
+                <!-- Répétez la même chose pour les plats et les desserts -->
+            </div>
+        </section>
+
+        <%- include('../partials/footer') %>
+    </body>
+</html>

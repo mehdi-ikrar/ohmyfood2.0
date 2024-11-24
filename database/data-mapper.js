@@ -1,9 +1,17 @@
+import db from './database-client.js';
+
 const datamapper = {
   // Méthode pour récupérer tous les restaurants avec leurs noms et images
   async getAllRestaurants() {
     const sqlQuery = 'SELECT name, image FROM restaurants';
-    const result = await db.query(sqlQuery);
-    return result.rows;  // Retourne tous les restaurants avec leurs noms et images
+    try {
+      const result = await db.query(sqlQuery);
+      console.log('Données récupérées dans getAllRestaurants:', result.rows); // Log des résultats
+      return result.rows; // Retourne tous les restaurants avec leurs noms et images
+    } catch (error) {
+      console.error('Erreur dans getAllRestaurants:', error); // Log de l'erreur
+      throw error; // Propagation de l'erreur pour le contrôleur
+    }
   },
 
   // Méthode pour récupérer un restaurant et ses plats par le nom du restaurant
@@ -24,10 +32,18 @@ const datamapper = {
       WHERE 
         r.name = $1;  -- Recherche par le nom du restaurant
     `;
-    
-    const result = await db.query(sqlQuery, [restaurantName]);
-    return result.rows;  // Retourne tous les plats pour ce restaurant
-  }
+    try {
+      const result = await db.query(sqlQuery, [restaurantName]);
+      console.log(
+        `Données récupérées pour le restaurant "${restaurantName}":`,
+        result.rows
+      ); // Log des résultats
+      return result.rows; // Retourne tous les plats pour ce restaurant
+    } catch (error) {
+      console.error(`Erreur dans getRestaurantByName pour "${restaurantName}":`, error); // Log de l'erreur
+      throw error; // Propagation de l'erreur pour le contrôleur
+    }
+  },
 };
 
 export default datamapper;

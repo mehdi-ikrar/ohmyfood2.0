@@ -19,9 +19,9 @@
             <div class="aside__discovery">
                 <h2>Réservez le menu qui vous covient</h2>
                 <h3>Découvrez des restaurants d'exception, bséléctionnés par nos soins.</h3>
-                <a href="#">
+                <a href="la_palette_du_gout">
                     <div class="restaurant__aside__button">
-                        <p> Explorez nos restaurants</p>
+                        <p> Ajoutez votre restaurant</p>
                     </div>
                 </a>
             </div>
@@ -44,85 +44,32 @@
                         <i class="fas fa-store"></i>
                         <p class="navigation__list_txt">Degustez au restaurants</p>
                     </li>
-
                 </ol>
             </nav>
         </aside>
 
         <section class="section__restaurant">
             <h2>Restaurants</h2>
-            <div class="restaurant__card_content">
-                <div class="restaurant__card">             
-                    <a href="la_palette_du_gout">
-                        <img src="images/La_palette_du_gout.jpg" alt="">
-                        <div class="bloctxt">
-                            <div class="restaurant__card__txt"> 
-                                <h3>La palette du gout </h3>
-                                <p>Ménilmontant</p>
-                            </div>
-                            <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                            </div>
+            <% restaurants.forEach(restaurant => { %>
+            <div class="restaurant__card">
+                <!-- Créer un lien dynamique qui inclut le slug du restaurant -->
+                <a href="/restaurants/<%= restaurant.slug %>">
+                    <img src="<%= restaurant.image %>" alt="">          
+                    <div class="bloctxt">
+                        <div class="restaurant__card__txt"> 
+                            <h3><%= restaurant.name %></h3>
+                            <p>Cité rouge</p>
                         </div>
-                    </a>
-                </div>
-    
-                <div class="restaurant__cards">
-                    <% restaurants.forEach(restaurant => { %>  <!-- Boucle sur tous les restaurants -->
-                      <div class="restaurant__card">
-                        <a href="<%= restaurant.name.toLowerCase().replace(/\s/g, '_') %>"> <!-- Utilisation d'un lien dynamique, basé sur le nom du restaurant -->
-                          <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>">
-                          <div class="restaurant__card__description">
-                            <div class="bloctxt">
-                              <div class="restaurant__card__txt">
-                                <h3><%= restaurant.name %></h3>  <!-- Affichage du nom du restaurant -->
-                                <p><%= restaurant.location %></p>  <!-- Affichage de la localisation (si tu l'as dans ta base de données) -->
-                              </div>
-                              <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    <% }); %> <!-- Fin de la boucle -->
-                  </div>
-                  
-                <div class="restaurant__card">
-                    <a href="a_la_francaise">
-                        <img src="images/A_la_francaise.jpg" alt="">
-                        <div class="bloctxt">
-                            <div class="restaurant__card__txt"> 
-                                <h3>A la francaise</h3>
-                                <p>Cité rouge</p>
-                            </div>
-                            <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                            </div>
+                        <div class="restaurant__card__heart">
+                            <p class="menu__card__news">Nouveau</p>
+                            <i class="far fa-heart"></i>
                         </div>
-                    </a>
-                </div>
-                <div class="restaurant__card">
-                    <a href="le_delice_des_sens">
-                        <img src="images/Le_delice_des_sens.jpg" alt="">
-                        <div class="bloctxt">
-                            <div class="restaurant__card__txt"> 
-                                <h3>Le delices des sens</h3>
-                                <p>Folle-melicourt</p>
-                            </div>
-                            <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
-
+            <% }) %>
         </section>
+
 
         <%- include('../partials/footer') %>
     </body>

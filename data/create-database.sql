@@ -44,15 +44,15 @@ CREATE TABLE desserts (
 INSERT INTO restaurants (name, image) VALUES
 ('La palette du goût', 'images/La_palette_du_gout.jpg'),
 ('Le délice des sens', 'images/Le_delice_des_sens.jpg'),
-('L''étoile des gourmets', 'images/L_etoile_des_gourmets.jpg'),
-('Saveurs d''antan', 'images/Saveurs_d_antan.jpg');
+('la note enchanté', 'images/la_note_enchantee.jpg'),
+('a la francaise', 'images/a_la_francaise.jpg');
 
 -- Insertion des données dans la table menus
 -- En supposant que les restaurants ont déjà été insérés et ont des id correspondants (1, 2, 3, 4)
 INSERT INTO menus (restaurant_id) VALUES
 (1),  -- La palette du goût
 (2),  -- Le délice des sens
-(3),  -- L'étoile des gourmets
+(3),  -- la_note_enchantee
 (4);  -- Saveurs d'antan
 
 -- Insertion des entrées
