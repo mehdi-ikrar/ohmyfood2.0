@@ -12,7 +12,9 @@ const datamapper = {
       console.error('Erreur dans getAllRestaurants:', error); // Log de l'erreur
       throw error; // Propagation de l'erreur pour le contrôleur
     }
-  },
+  },  
+
+  
 
   // Méthode pour récupérer un restaurant et ses plats par le nom du restaurant
   async getRestaurantByName(restaurantName) {

@@ -9,7 +9,7 @@ app.use(express.static("./public"));  // Utiliser le dossier "public" pour les f
 app.set("view engine", "ejs");
 app.set("views", "./views");
 console.log('DATABASE_URL:', process.env.DATABASE_URL);
-
+app.use(express.urlencoded({ extended: true }));
 app.use(router);
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;

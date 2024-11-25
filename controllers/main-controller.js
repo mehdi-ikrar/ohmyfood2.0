@@ -1,6 +1,33 @@
-import datamapper from '../database/data-mapper.js';
+import datamapper from '../database/data-mapper.js'; // Assure-toi que ton DataMapper est bien configuré
 
 const mainController = {
+  // Fonction qui récupère les données du formulaire
+  handleAddRestaurant(req, res) {
+    // Récupérer les données du formulaire
+    const { name, image, menu, entree_name, entree_desc, entree_price, plat_name, plat_desc, plat_price, dessert_name, dessert_desc, dessert_price } = req.body;
+
+    // Log des données reçues pour vérifier
+    console.log('Données reçues du formulaire:', {
+      name,
+      image,
+      menu,
+      entree_name,
+      entree_desc,
+      entree_price,
+      plat_name,
+      plat_desc,
+      plat_price,
+      dessert_name,
+      dessert_desc,
+      dessert_price
+    });
+
+    // Tu pourrais ici les enregistrer dans la base de données avec ton DataMapper
+
+    // Pour l'instant, renvoyer un message de succès ou d'erreur
+    res.redirect('/');
+  },
+
   renderHomePage(req, res) {
     datamapper
       .getAllRestaurants()
@@ -13,7 +40,7 @@ const mainController = {
         res.status(500).send('Erreur lors de la récupération des restaurants');
       });
   },
-
+  
   renderNoteEnchantee(req, res) {
     datamapper
       .getRestaurantByName('La Note Enchantée')
@@ -51,6 +78,11 @@ const mainController = {
         console.error('Erreur dans renderDeliceDesSens:', error); // Log de l'erreur
         res.status(500).send('Erreur lors de la récupération du restaurant');
       });
+  },
+
+  renderAddRestaurants(req, res) {
+    console.log("Affichage de la page pour ajouter un restaurant"); // Log ajouté
+    res.render("pages/addRestaurants");
   },
 
   renderALaFrancaise(req, res) {
