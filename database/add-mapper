@@ -1,0 +1,49 @@
+async addRestaurant({ name, image, menus, entree, plat, dessert }) {
+  try {
+    // Démarre une transaction
+    await db.query('BEGIN');
+
+    // Insérer le restaurant
+    const restaurantResult = await db.query(
+      'INSERT INTO restaurants (name, image, menus) VALUES ($1, $2, $3) RETURNING id',
+      [name, image, menus]
+    );
+    const restaurantId = restaurantResult.rows[0].id;
+
+    // Insérer l'entrée
+    if (entree) {
+      await db.query(
+        'INSERT INTO entrees (restaurant_id, name, description, price) VALUES ($1, $2, $3, $4)',
+        [restaurantId, entree.name, entree.description, entree.price]
+      );
+    }
+
+    // Insérer le plat
+    if (plat) {
+      await db.query(
+        'INSERT INTO plats (restaurant_id, name, description, price) VALUES ($1, $2, $3, $4)',
+        [restaurantId, plat.name, plat.description, plat.price]
+      );
+    }
+
+    // Insérer le dessert
+    if (dessert) {
+      await db.query(
+        'INSERT INTO desserts (restaurant_id, name, description, price) VALUES ($1, $2, $3, $4)',
+        [restaurantId, dessert.name, dessert.description, dessert.price]
+      );
+    }
+
+    // Commit de la transaction
+    await db.query('COMMIT');
+    console.log('Restaurant ajouté avec succès!');
+    return restaurantId; // Retourner l'ID du restaurant créé
+  } catch (error) {
+    // Rollback de la transaction en cas d'erreur
+    await db.query('ROLLBACK');
+    console.error('Erreur lors de l\'ajout du restaurant:', error);
+    throw error; // Propagation de l'erreur pour le contrôleur
+  }
+}
+
+};

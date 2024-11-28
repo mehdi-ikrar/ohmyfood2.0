@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import pg from 'pg';
 
 // Create connexion client to Postgres database

@@ -1,51 +1,90 @@
-import db from './database-client.js';
+import db from './database-client.js'; // Assure-toi d'avoir bien ton client de base de données
 
 const datamapper = {
   // Méthode pour récupérer tous les restaurants avec leurs noms et images
   async getAllRestaurants() {
-    const sqlQuery = 'SELECT name, image FROM restaurants';
+    const sqlQuery = `
+    SELECT 
+      r.id AS restaurant_id,
+      r.name AS restaurant_name,
+      r.image AS restaurant_image,
+      e.name AS entree_name,
+      e.description AS entree_description,
+      e.price AS entree_price,
+      p.name AS plat_name,
+      p.description AS plat_description,
+      p.price AS plat_price,
+      d.name AS dessert_name,
+      d.description AS dessert_description,
+      d.price AS dessert_price
+    FROM 
+      restaurants r
+    LEFT JOIN 
+      menus m ON r.id = m.restaurant_id
+    LEFT JOIN 
+      entrees e ON m.id = e.menu_id
+    LEFT JOIN 
+      plats p ON m.id = p.menu_id
+    LEFT JOIN 
+      desserts d ON m.id = d.menu_id
+    `;
+
     try {
       const result = await db.query(sqlQuery);
-      console.log('Données récupérées dans getAllRestaurants:', result.rows); // Log des résultats
-      return result.rows; // Retourne tous les restaurants avec leurs noms et images
-    } catch (error) {
-      console.error('Erreur dans getAllRestaurants:', error); // Log de l'erreur
-      throw error; // Propagation de l'erreur pour le contrôleur
-    }
-  },  
 
-  
+      // Créer un objet pour chaque restaurant
+      const restaurants = {};
 
-  // Méthode pour récupérer un restaurant et ses plats par le nom du restaurant
-  async getRestaurantByName(restaurantName) {
-    const sqlQuery = `
-      SELECT 
-        r.name AS restaurant_name,
-        r.image AS restaurant_image,
-        p.name AS plat_name,
-        p.description AS plat_description,
-        p.price AS plat_price
-      FROM 
-        restaurants r
-      JOIN 
-        menus m ON r.id = m.restaurant_id
-      JOIN 
-        plats p ON m.id = p.menu_id
-      WHERE 
-        r.name = $1;  -- Recherche par le nom du restaurant
-    `;
-    try {
-      const result = await db.query(sqlQuery, [restaurantName]);
-      console.log(
-        `Données récupérées pour le restaurant "${restaurantName}":`,
-        result.rows
-      ); // Log des résultats
-      return result.rows; // Retourne tous les plats pour ce restaurant
+      result.rows.forEach(row => {
+        if (!restaurants[row.restaurant_id]) {
+          // Créer un restaurant si il n'existe pas encore
+          restaurants[row.restaurant_id] = {
+            id: row.restaurant_id,
+            name: row.restaurant_name,
+            image: row.restaurant_image,
+            entree: [],
+            plats: [],
+            dessert: []
+          };
+        }
+
+        // Ajouter l'entrée au restaurant
+        if (row.entree_name) {
+          restaurants[row.restaurant_id].entree.push({
+            name: row.entree_name,
+            description: row.entree_description,
+            price: row.entree_price
+          });
+        }
+
+        // Ajouter le plat au restaurant
+        if (row.plat_name) {
+          restaurants[row.restaurant_id].plats.push({
+            name: row.plat_name,
+            description: row.plat_description,
+            price: row.plat_price
+          });
+        }
+
+        // Ajouter le dessert au restaurant
+        if (row.dessert_name) {
+          restaurants[row.restaurant_id].dessert.push({
+            name: row.dessert_name,
+            description: row.dessert_description,
+            price: row.dessert_price
+          });
+        }
+      });
+
+      // Convertir l'objet en tableau
+      const restaurantsArray = Object.values(restaurants);
+
+      return restaurantsArray; // Retourne un tableau de restaurants avec leurs plats, entrées et desserts
     } catch (error) {
-      console.error(`Erreur dans getRestaurantByName pour "${restaurantName}":`, error); // Log de l'erreur
-      throw error; // Propagation de l'erreur pour le contrôleur
+      console.error('Erreur dans getAllRestaurants:', error);
+      throw error;
     }
-  },
-};
+  }
+}
 
 export default datamapper;

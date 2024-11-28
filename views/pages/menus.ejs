@@ -4,11 +4,11 @@
     <body>
         <%- include('../partials/header') %>
         <figure>    
-            <img class="figure__img" src="images/La_palette_du_gout.jpg" alt="logo du site ohmyfood">
+            <img class="figure__img" src="<%= restaurant.image %>" alt="logo du site ohmyfood">
         </figure>
         <section class="section__menu">
             <div class="menu__header">
-                <h2 class="menu__title">La palette du goût</h2>
+                <h2 class="menu__title"></h2>
                 <i class="far fa-heart"></i>
             </div>
             <div class="menu__card__container">
@@ -17,8 +17,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Fricassée d'escargot</p>
-                                <p class="menu__card__subdescription">Au piment d'Espelette </p>
+                                <p class="menu__card__titledescription">Tartare de poulpe acidulé</p>
+                                <p class="menu__card__subdescription">Aux zestes d'orange</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -31,8 +31,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Foie gras de canard mi-cuit</p>
-                                <p class="menu__card__subdescription">Et ses copeaux de truffe noire</p>
+                                <p class="menu__card__titledescription">Velouté de légumes d'antan</p>
+                                <p class="menu__card__subdescription">Carotte, panais, topinambour</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -45,8 +45,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Oeuf au plat</p>
-                                <p class="menu__card__subdescription">Assaisonné à la truffe sur lit de caviar</p>
+                                <p class="menu__card__titledescription">Soupe à l'oignon</p>
+                                <p class="menu__card__subdescription">Revisitée</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -62,8 +62,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Filet de boeuf aux herbes</p>
-                                <p class="menu__card__subdescription">Accompagnées de sa ribembelle de legumes</p>
+                                <p class="menu__card__titledescription">Coquilles Saint-Jacques</p>
+                                <p class="menu__card__subdescription">Accompagnées d'une purée de panais</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -76,8 +76,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Parmentier de queue de boeuf</p>
-                                <p class="menu__card__subdescription">À la truffe noire sur sa purée de panais</p>
+                                <p class="menu__card__titledescription">Magret de canard</p>
+                                <p class="menu__card__subdescription">Et parmentier de pomme de terrre</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -90,8 +90,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Filet de turbot</p>
-                                <p class="menu__card__subdescription">Aux agrumes</p>
+                                <p class="menu__card__titledescription">Pigeonneau d’Ille-et-Vilaine</p>
+                                <p class="menu__card__subdescription">Sur son lit de gnocchis aux légumes</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -107,7 +107,21 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Paris-Brest</p>
+                                <p class="menu__card__titledescription">Pétales de violettes glacés</p>
+                                <p class="menu__card__subdescription">Et purée de noisettes</p>
+                            </div>
+                            <div class="pricecheck">
+                                <p class="menu__card__price">35€</p>
+                                <div class="menu__card__check">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="menu__card ">
+                            <div class="menu__card__description">
+                                <p class="menu__card__titledescription">Fondant au chocolat</p>
                                 <p class="menu__card__subdescription">Revisité</p>
                             </div>
                             <div class="pricecheck">
@@ -121,22 +135,8 @@
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Macaron au chocolat d'exception </p>
-                                <p class="menu__card__subdescription">Et glace à la vanille de Madagascar</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Mousse au chocolat </p>
-                                <p class="menu__card__subdescription">Au piment d'Espelette et à la truffe noire</p>
+                                <p class="menu__card__titledescription">Millefeuille croustillant</p>
+                                <p class="menu__card__subdescription">Myrtilles et pâte d’amande</p>
                             </div>
                             <div class="pricecheck">
                                 <p class="menu__card__price">35€</p>
@@ -155,6 +155,7 @@
                 </div>
             </a>
         </section>
+
         <%- include('../partials/footer') %>
     </body>
 </html>
