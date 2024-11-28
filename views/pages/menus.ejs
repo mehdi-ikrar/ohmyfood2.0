@@ -4,7 +4,7 @@
     <body>
         <%- include('../partials/header') %>
         <figure>    
-            <img class="figure__img" src="<%= restaurant.image %>" alt="logo du site ohmyfood">
+            <img class="figure__img" :src="`/images/${restaurant.image}`" alt="Image du restaurant">
         </figure>
         <section class="section__menu">
             <div class="menu__header">
@@ -14,48 +14,22 @@
             <div class="menu__card__container">
                 <div class="menu__card__grope">
                     <h3>ENTRÉES</h3>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Tartare de poulpe acidulé</p>
-                                <p class="menu__card__subdescription">Aux zestes d'orange</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
+                    <% restaurant.entree.forEach(function(item) { %>
+                        <a href="#">
+                            <div class="menu__card">
+                                <div class="menu__card__description">
+                                    <p class="menu__card__titledescription"><%= item.name %></p>
+                                    <p class="menu__card__subdescription"><%= item.description %></p>
+                                </div>
+                                <div class="pricecheck">
+                                    <p class="menu__card__price"><%= item.price %>€</p>
+                                    <div class="menu__card__check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Velouté de légumes d'antan</p>
-                                <p class="menu__card__subdescription">Carotte, panais, topinambour</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Soupe à l'oignon</p>
-                                <p class="menu__card__subdescription">Revisitée</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    <% }); %>
                 </div>
                 <div class="menu__card__grope">
                     <h3>PLATS</h3>

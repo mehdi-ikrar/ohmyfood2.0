@@ -17,7 +17,8 @@ const mainController = {
 
     try {
         const allRestaurants = await datamapper.getAllRestaurants();
-
+      console.log(allRestaurants);
+      
         // Cherche un restaurant correspondant à l'ID
         const foundRestaurant = allRestaurants.find(r => r.id == restaurantId);
 
@@ -26,7 +27,7 @@ const mainController = {
             return res.status(404).send('Restaurant non trouvé');
         }
 
-        console.log(foundRestaurant);
+       
         
         // Si une correspondance est trouvée, retourne-la
         res.render('pages/menus', { restaurant: foundRestaurant });// Utilisez `restaurant` ici pour éviter toute confusion
