@@ -1,10 +1,9 @@
-import db from './database-client.js'; // Assure-toi d'avoir bien ton client de base de données
+
+import {sequelize } from '../models/sequelize-client.js';
 
 const datamapper = {
-  // Méthode pour récupérer tous les restaurants avec leurs noms et images
   async getAllRestaurants() {
-    const sqlQuery = `
-    SELECT 
+    const sqlQuery = `SELECT 
       r.id AS restaurant_id,
       r.name AS restaurant_name,
       r.image AS restaurant_image,
@@ -26,18 +25,19 @@ const datamapper = {
     LEFT JOIN 
       plats p ON m.id = p.menu_id
     LEFT JOIN 
-      desserts d ON m.id = d.menu_id
-    `;
+      desserts d ON m.id = d.menu_id`;
 
     try {
-      const result = await db.query(sqlQuery);
+      const result = await sequelize.query(sqlQuery, {
+        type: sequelize.QueryTypes.SELECT // Option pour obtenir des résultats bruts sous forme de tableau
+      });
 
-      // Créer un objet pour chaque restaurant
+      console.log(result); // Vérifiez la structure des résultats
+
       const restaurants = {};
 
-      result.rows.forEach(row => {
+      result.forEach(row => {
         if (!restaurants[row.restaurant_id]) {
-          // Créer un restaurant si il n'existe pas encore
           restaurants[row.restaurant_id] = {
             id: row.restaurant_id,
             name: row.restaurant_name,
@@ -48,8 +48,8 @@ const datamapper = {
           };
         }
 
-        // Ajouter l'entrée au restaurant
-        if (row.entree_name) {
+        // Ajouter les entrées sans doublons
+        if (row.entree_name && !restaurants[row.restaurant_id].entree.find(e => e.name === row.entree_name)) {
           restaurants[row.restaurant_id].entree.push({
             name: row.entree_name,
             description: row.entree_description,
@@ -57,8 +57,8 @@ const datamapper = {
           });
         }
 
-        // Ajouter le plat au restaurant
-        if (row.plat_name) {
+        // Ajouter les plats sans doublons
+        if (row.plat_name && !restaurants[row.restaurant_id].plats.find(p => p.name === row.plat_name)) {
           restaurants[row.restaurant_id].plats.push({
             name: row.plat_name,
             description: row.plat_description,
@@ -66,8 +66,8 @@ const datamapper = {
           });
         }
 
-        // Ajouter le dessert au restaurant
-        if (row.dessert_name) {
+        // Ajouter les desserts sans doublons
+        if (row.dessert_name && !restaurants[row.restaurant_id].dessert.find(d => d.name === row.dessert_name)) {
           restaurants[row.restaurant_id].dessert.push({
             name: row.dessert_name,
             description: row.dessert_description,
@@ -76,15 +76,14 @@ const datamapper = {
         }
       });
 
-      // Convertir l'objet en tableau
       const restaurantsArray = Object.values(restaurants);
 
-      return restaurantsArray; // Retourne un tableau de restaurants avec leurs plats, entrées et desserts
+      return restaurantsArray; // Retourne un tableau de restaurants bien formaté
     } catch (error) {
       console.error('Erreur dans getAllRestaurants:', error);
       throw error;
     }
   }
-}
+};
 
 export default datamapper;

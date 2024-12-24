@@ -4,7 +4,7 @@
     <body>
         <%- include('../partials/header') %>
         <figure>    
-            <img class="figure__img" :src="`/images/${restaurant.image}`" alt="Image du restaurant">
+            <img class="figure__img" src="/<%= restaurant.image %>" alt="Image du restaurant">
         </figure>
         <section class="section__menu">
             <div class="menu__header">
@@ -33,103 +33,49 @@
                 </div>
                 <div class="menu__card__grope">
                     <h3>PLATS</h3>
+                    <% restaurant.plats.forEach(function(item) { %>
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Coquilles Saint-Jacques</p>
-                                <p class="menu__card__subdescription">Accompagnées d'une purée de panais</p>
+                                <p class="menu__card__titledescription"><%= item.name %></p>
+                                <p class="menu__card__subdescription"><%= item.description %></p>
                             </div>
                             <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
+                                <p class="menu__card__price"><%= item.price %>€</p>
                                 <div class="menu__card__check">
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Magret de canard</p>
-                                <p class="menu__card__subdescription">Et parmentier de pomme de terrre</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Pigeonneau d’Ille-et-Vilaine</p>
-                                <p class="menu__card__subdescription">Sur son lit de gnocchis aux légumes</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    <% }); %>
                 </div>
                 <div class="menu__card__grope">
                     <h3>DESSERTS</h3>
+                    <% restaurant.dessert.forEach(function(item) { %>
                     <a href="#">
                         <div class="menu__card ">
                             <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Pétales de violettes glacés</p>
-                                <p class="menu__card__subdescription">Et purée de noisettes</p>
+                                <p class="menu__card__titledescription"><%= item.name %></p>
+                                <p class="menu__card__subdescription"><%= item.description %></p>
                             </div>
                             <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
+                                <p class="menu__card__price"><%= item.price %>€</p>
                                 <div class="menu__card__check">
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Fondant au chocolat</p>
-                                <p class="menu__card__subdescription">Revisité</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="menu__card ">
-                            <div class="menu__card__description">
-                                <p class="menu__card__titledescription">Millefeuille croustillant</p>
-                                <p class="menu__card__subdescription">Myrtilles et pâte d’amande</p>
-                            </div>
-                            <div class="pricecheck">
-                                <p class="menu__card__price">35€</p>
-                                <div class="menu__card__check">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    </a> 
+                    <% }); %>
                 </div>
             </div>
-
             <a href="#">
                 <div class="menu__button btn">
                     <p>Commander</p>
                 </div>
             </a>
         </section>
-
         <%- include('../partials/footer') %>
     </body>
 </html>
