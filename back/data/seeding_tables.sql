@@ -1,7 +1,4 @@
-DELETE FROM dessert;
-DELETE FROM main;
-DELETE FROM starter;
-DELETE FROM restaurant;
+
 -- Insertion des données dans la table restaurants
 INSERT INTO restaurant (name, city, image) VALUES
 ('La palette du goût', 'Le Canal Saint-Martin', 'images/La_palette_du_gout.jpg'),

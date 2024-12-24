@@ -30,7 +30,7 @@ client{
 
 profil{
     id                            -- identifiant entier généré automatiquement
-    order
+    order                         -- Chaîne de 10 caractères fixes
     like
     dislike
 }

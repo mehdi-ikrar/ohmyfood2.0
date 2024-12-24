@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import mainController from './controllers/main-controller.js';
-import newController from './controllers/add-controller.js';
+import mainController from '../controllers/main-controller.js';
+import newController from '../controllers/add-controller.js';
 import signup from './controllers/authcontroller.js';
 
 
