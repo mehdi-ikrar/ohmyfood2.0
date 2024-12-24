@@ -1,5 +1,5 @@
 
-import {sequelize } from '../models/sequelize-client.js';
+import {sequelize } from '../back/models/client.js';
 
 const datamapper = {
   async getAllRestaurants() {

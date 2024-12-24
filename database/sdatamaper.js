@@ -1,5 +1,5 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
-import { sequelize } from '../models/sequelize-client.js';
+import { sequelize } from '../back/models/client.js';
 
 export class Dessert extends Model {}
 
