@@ -1,0 +1,39 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto", "Sans serif";
+    margin: auto;
+    a:link { 
+        text-decoration:none; 
+        } 
+}
+
+@mixin btn {
+    padding: 10px;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    margin: auto;
+    width: 250px;
+    box-shadow: $shadow;
+    background: $pink-btn;
+    transform: scale(1);
+    transition: transform 400ms;
+    &:hover {
+        transform: scale(1.1);
+    } 
+}
+
+@mixin heart {
+    font-size: 2em;
+    color: black;
+    cursor: pointer;
+    &:hover {
+      animation: fill 0.5s ease-in-out;
+      opacity: 1;
+      background:linear-gradient(0deg,$pink-heart 0%,$purple-heart 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color:transparent;
+      font-weight: bold;
+    }
+  }

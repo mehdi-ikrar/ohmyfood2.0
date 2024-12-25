@@ -5,7 +5,6 @@ restaurant{
     image                         -- chaine de caractère             
     note    
 }
-
 starter{
     id                            -- identifiant entier généré automatiquement
     description                   -- chaine de caractère 

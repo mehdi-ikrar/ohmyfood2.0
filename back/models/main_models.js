@@ -1,6 +1,6 @@
 // models/dessert.js
 import { DataTypes, Model} from 'sequelize';
-import { sequelize } from './client.js'; // Assure-toi d'avoir une instance de sequelize client
+import { sequelize } from './sequelize_client.js'; // Assure-toi d'avoir une instance de sequelize client
 
 export class Main extends Model {}
 
@@ -27,5 +27,5 @@ Main.init(
   
 );
 
-const main = await Main.findAll()
+const main = await Main.findAll();
 console.log(main);

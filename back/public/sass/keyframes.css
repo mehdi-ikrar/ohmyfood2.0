@@ -1,0 +1,106 @@
+@keyframes appear {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 78px;
+  }
+}
+@keyframes back {
+  0% {
+    width: 78px;
+  }
+  100% {
+    width: 0px;
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(70deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes itemAppear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes loader {
+  100% {
+    opacity: 0;
+    z-index: -10;
+  }
+}
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(0.5rem);
+  }
+  75% {
+    transform: translateY(-0.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+@keyframes jump {
+  0% {
+    margin-left: 0px;
+  }
+  50% {
+    margin-left: 40px;
+    transform: rotate(360deg);
+  }
+  100% {
+    margin-left: 13050px;
+  }
+}
+@keyframes jumpphone {
+  0% {
+    margin-left: 0px;
+  }
+  50% {
+    margin-left: 10px;
+    transform: rotate(360deg);
+  }
+  100% {
+    margin-left: 10100px;
+  }
+}
+@keyframes fill {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=keyframes.css.map */

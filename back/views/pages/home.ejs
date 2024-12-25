@@ -53,7 +53,7 @@
             <% restaurants.forEach(restaurant => { %>
             <div class="restaurant__card">
                 <!-- Créer un lien dynamique qui inclut le slug du restaurant -->
-                <a href="menus/<%= restaurant.id %>">
+                <a href="/front/restaurant.html?id=<%= restaurant.id %>">
                     <img src="<%= restaurant.image %>" alt="">          
                     <div class="bloctxt">
                         <div class="restaurant__card__txt"> 

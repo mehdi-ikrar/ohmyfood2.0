@@ -6,11 +6,15 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "scss": "sass --watch src/scss:public/css"
+    "scss": "sass --watch src/scss:public/css",
+    "db:sync": "node src/data/create_tables.sql",
+    "db:seed": "node src/data/seed_tables.sql",
+    "db:reset": "npm run db:sync && npm run db:seed"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
+    "eslint": "^9.17.0",
     "express": "^4.21.1",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
