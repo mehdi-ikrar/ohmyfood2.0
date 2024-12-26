@@ -9,7 +9,6 @@ export const restaurantController = {
   
   async getAllRestaurants(req, res) {
     const restaurants = await Restaurant.findAll();
-    if(!restaurants) return res.status(404).json('aucun restaurants trouvé dans la base');
     res.status(200).json(restaurants);
   },
 
