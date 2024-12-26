@@ -11,7 +11,7 @@ export const restaurantCreateSchema = Joi.object({
     "string.max": "La ville ne peut pas dépasser 50 caractères.",
     "any.required": "La ville est obligatoire."
   }),
-  image: Joi.string().min(3).max(50).required().messages({
+  image: Joi.string().min(3).max(200).required().messages({
     "string.min": "La ville doit contenir au moins 3 caractères.",
     "string.max": "L'image ne peut pas dépasser 50 caractères.",
     "any.required": "L'image est obligatoire."
@@ -30,7 +30,7 @@ export const restaurantUpdateSchema = Joi.object({
     "string.max": "La ville ne peut pas dépasser 50 caractères.",
 
   }),
-  image: Joi.string().min(3).max(50).messages({
+  image: Joi.string().min(3).max(200).messages({
     "string.min": "La ville doit contenir au moins 3 caractères.",
     "string.max": "L'image ne peut pas dépasser 50 caractères.",
 

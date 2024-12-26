@@ -3,7 +3,7 @@ import { restaurantController } from '../controllers/restaurants_controller.js';
 import { dessertController } from '../controllers/dessert_controller.js';
 import { starterController } from '../controllers/starter_controller.js';
 import { mainController } from '../controllers/main_controller.js';
-
+import { controllerWrapper} from '../middlewares/controller_wrapper.js';
 
 export const router = new Router();
 
@@ -11,23 +11,45 @@ export const router = new Router();
 
 
 router.route('/restaurant/')
-  .get(restaurantController.getAllRestaurants )
-  .post(restaurantController.createRestaurant );
+  .post(controllerWrapper(restaurantController.createRestaurant))
+  .get(controllerWrapper(restaurantController.getAllRestaurants ));
 router.route('/restaurant/:id(\\d+)')
-  .get(restaurantController.getOneRestaurant)
-  .delete(restaurantController.deleteRestaurant)
-  .patch(restaurantController.updateRestaurant);
+  .get(controllerWrapper(restaurantController.getOneRestaurant))
+  .delete(controllerWrapper(restaurantController.deleteRestaurant))
+  .patch(controllerWrapper(restaurantController.updateRestaurant));
 
 
-router.get('/desserts/', dessertController.getAllDesserts );
-router.post('/desserts/', dessertController.createDessert );
+
+router.route('/starter/')
+  .get( controllerWrapper(starterController.getAllStarters ))
+  .post( controllerWrapper(dessertController.createDessert));
+router.route('/starter/:id(\\d+)')
+  .get(controllerWrapper(starterController.getOneStarter))
+  .delete(controllerWrapper(starterController.deleteStarter))
+  .patch(controllerWrapper(starterController.updateStarter));
 
 
-router.get('/starters/', starterController.getAllStarters );
-router.post('/starters/', starterController.createStarter );
+
+router.route('/main/')
+  .get( controllerWrapper(mainController.getAllMains ))
+  .post( controllerWrapper(mainController.createMain));
+router.route('/main/:id(\\d+)')
+  .get(controllerWrapper(mainController.getOneMain))
+  .delete(controllerWrapper(mainController.deleteMain))
+  .patch(controllerWrapper(mainController.updateMain));
 
 
-router.get('/main/', mainController.getAllMains );
-router.post('/main/', mainController.createMain );
+router.route('/dessert/')
+  .get( controllerWrapper(dessertController.getAllDesserts ))
+  .post( controllerWrapper(dessertController.createDessert));
+router.route('/dessert/:id(\\d+)')
+  .get(controllerWrapper(dessertController.getOneDessert))
+  .delete(controllerWrapper(dessertController.deleteDessert))
+  .patch(controllerWrapper(dessertController.updateDessert));
 
-export default router;
+
+
+router.use((req, res) => {
+  res.status(404).json({error: 'Not found'});
+});
+

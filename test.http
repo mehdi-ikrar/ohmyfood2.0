@@ -3,7 +3,7 @@ GET   http://localhost:3000/restaurant
 
 
 ### Récupération d'un restaurant
-GET   http://localhost:3000/restaurant/2
+GET   http://localhost:3000/restaurant/18
 
 ### Creer un restaurant 
 POST   http://localhost:3000/restaurant
@@ -24,7 +24,142 @@ patch   http://localhost:3000/restaurant/1
 Content-Type: application/json
 
 {
-  "name": "La palette du gout",
+  "name": "La palette du gosat",
   "city": "Le Canal Saint-Martin",
   "image": "images/La_palette_du_gout.jpg"
 }
+
+### Récupération de tout les restaurants 
+GET   http://localhost:3000/restaurs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Récupération de tout les starters 
+GET   http://localhost:3000/starter
+
+
+### Récupération d'un starter
+GET   http://localhost:3000/starter/2
+
+### Creer un starter 
+POST   http://localhost:3000/starter
+Content-Type: application/json
+
+{
+  "name": "fsd",
+  "description": "sdqsfsd",
+  "price": "12",
+  "restaurant_id":"1"
+}
+
+### Creer un starter 
+DELETE http://localhost:3000/starter/11
+Content-Type: application/json
+
+### Modifier un starter
+patch   http://localhost:3000/starter/1
+Content-Type: application/json
+
+{
+  "name": "fsd",
+  "description": "sdqsfsd",
+  "price": "122",
+  "restaurant_id":"1"
+}
+
+### Récupération mauvais tarter
+GET   http://localhost:3000/str
+
+
+
+
+
+
+
+
+### Récupération de tout les mains 
+GET   http://localhost:3000/main
+
+
+### Récupération d'un main
+GET   http://localhost:3000/main/2
+
+### Creer un main 
+POST   http://localhost:3000/main
+Content-Type: application/json
+
+{
+  "name": "fs*d",
+  "description": "sdq*sfsd",
+  "price": "121",
+  "restaurant_id":"1"
+}
+
+### Creer un main 
+DELETE http://localhost:3000/main/11
+Content-Type: application/json
+
+### Modifier un main
+patch   http://localhost:3000/main/1
+Content-Type: application/json
+
+{
+  "name": "fsd",
+  "description": "sdqsfsd",
+  "price": "122",
+  "restaurant_id":"1"
+}
+
+### Récupération mauvais tarter
+GET   http://localhost:3000/str
+
+
+
+
+### Récupération de tout les desserts 
+GET   http://localhost:3000/dessert
+
+
+### Récupération d'un dessert
+GET   http://localhost:3000/dessert/2
+
+### Creer un dessert 
+POST   http://localhost:3000/dessert
+Content-Type: application/json
+
+{
+  "name": "fs*d",
+  "description": "sdq*sfsd",
+  "price": "121",
+  "restaurant_id":"1"
+}
+
+### Creer un dessert 
+DELETE http://localhost:3000/dessert/11
+Content-Type: application/json
+
+### Modifier un dessert
+patch   http://localhost:3000/dessert/1
+Content-Type: application/json
+
+{
+  "name": "fsd",
+  "description": "sdqsfsd",
+  "price": "122",
+  "restaurant_id":"1"
+}
+
+### Récupération mauvais tarter
+GET   http://localhost:3000/str
