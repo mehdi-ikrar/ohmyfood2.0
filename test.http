@@ -1,8 +1,5 @@
-POST http://localhost:3000/restaurants
-Content-Type: application/json
+GET  http://localhost:3000/main
 
-{
-  "name": "chawarma",
-  "city": "aubeer",
-  "image": "moli"
-}
+
+
+

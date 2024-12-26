@@ -1,22 +1,5 @@
 import { Restaurant } from '../models/associations.js';
 
-/*export const restaurantController = {
-  async getAllRestaurants(req, res) {
-    try {
-      const restaurants = await Restaurant.findAll(); // Récupère tous les restaurants
-
-
-      // Rendu de la page 'home' avec les restaurants
-      res.render('pages/home', { restaurants }); // Envoie les restaurants à la vue 'home'
-    } catch (error) {
-      console.error('Error fetching restaurants:', error); // Log des erreurs
-      res.status(500).json({ error: 'Failed to fetch restaurants' });
-    }
-  }
-};
-*/
-
-
 export const restaurantController = {
 
 
