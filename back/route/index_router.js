@@ -14,11 +14,14 @@ router.get('/addRestaurants', newController.renderAdd);
 router.post('/addRestaurants', newController.handleAdd);
 router.get('/menus/:id', mainController.renderMenus);
 router.get("/", restaurantController.getAllRestaurants);
+router.post('/restaurant/', restaurantController.getOneRestaurant);
+router.post('/restaurants/', restaurantController.getAllRestaurants );
 */
 
 
 
-router.post('/restaurant/', restaurantController.getAllRestaurants );
+
+router.post('/restaurants/', restaurantController.createRestaurant );
 
 
 export default router;

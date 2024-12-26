@@ -1,3 +1,8 @@
-POST http://localhost:3000/restaurant
+POST http://localhost:3000/restaurants
 Content-Type: application/json
 
+{
+  "name": "chawarma",
+  "city": "aubeer",
+  "image": "moli"
+}
