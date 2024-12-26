@@ -22,6 +22,10 @@ export const restaurantController = {
     res.json(restaurant);
   },
 
+
+
+
+
   async createRestaurant(req, res) {
     try {
       const inputData = req.body;
@@ -39,6 +43,54 @@ export const restaurantController = {
     } catch (error) {
       console.error("Erreur lors de la création du restaurant :", error);
       return res.status(500).json({ error: "Erreur serveur" });
+    }
+  },
+
+
+
+
+  async updateRestaurant(req,res){
+    try{
+      const { id } = req.params;
+      const inputData = req.body;
+      const restaurant = await Restaurant.findByPk(id);
+      if(!restaurant){
+        return res.status(404).json({error: 'le restaurant na pas été rouvé'});
+      }
+
+      if (!inputData.name) {
+        return res.status(400).json({ error: "Le nom est manquant" });
+      }
+      
+      await restaurant.update(inputData);
+  
+      res.json(restaurant);
+
+    }catch(err) {
+      console.error(err);
+      res.status(500).json({error: 'internal server error'});
+      
+    }
+  },
+
+
+
+
+  async deleteRestaurant(req,res){
+    try{
+      const { id } = req.params;
+      const restaurant = await Restaurant.findByPk(id);
+      if(!restaurant){
+        return res.status(404).json({error: 'le restaurant na pas été rouvé'});
+      }
+
+      await restaurant.destroy();
+      res.status(204).json();
+
+    }catch(err) {
+      console.error(err);
+      res.status(500).json({error: 'internal server error'});
+      
     }
   }
   
