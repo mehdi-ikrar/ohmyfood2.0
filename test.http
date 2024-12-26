@@ -1,5 +1,5 @@
 ### Récupération de tout les restaurants 
-GET   http://localhost:3000/restaurants
+GET   http://localhost:3000/restaurant
 
 
 ### Récupération d'un restaurant
@@ -10,13 +10,13 @@ POST   http://localhost:3000/restaurant
 Content-Type: application/json
 
 {
-  "name": "fsdfsd",
+  "name": "fsd",
   "city": "sdqsfsd",
   "image": "sqdqfsdfsd"
 }
 
 ### Creer un restaurant 
-DELETE http://localhost:3000/restaurant/13
+DELETE http://localhost:3000/restaurant/14
 Content-Type: application/json
 
 ### Modifier un restaurant
@@ -24,7 +24,7 @@ patch   http://localhost:3000/restaurant/1
 Content-Type: application/json
 
 {
-  "name": "La palette du goute",
+  "name": "La palette du gout",
   "city": "Le Canal Saint-Martin",
   "image": "images/La_palette_du_gout.jpg"
 }

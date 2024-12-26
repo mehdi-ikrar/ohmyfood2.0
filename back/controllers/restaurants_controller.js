@@ -1,4 +1,6 @@
 import { Restaurant } from '../models/associations.js';
+import { restaurantCreateSchema,restaurantUpdateSchema } from '../schema/restaurant.schema.js';
+
 
 export const restaurantController = {
 
@@ -31,18 +33,16 @@ export const restaurantController = {
       const inputData = req.body;
   
       // Validation des données
-      if (!inputData.name) {
-        return res.status(400).json({ error: "Le nom est manquant" });
-      }
+      await restaurantCreateSchema.validateAsync(inputData);
   
       // Création du restaurant
       const user = await Restaurant.create(inputData);
   
       // Envoi de la réponse
-      return res.status(201).json({ user });
+      res.status(201).json({ user });
     } catch (error) {
       console.error("Erreur lors de la création du restaurant :", error);
-      return res.status(500).json({ error: "Erreur serveur" });
+      res.status(500).json({ error: "Erreur serveur" });
     }
   },
 
@@ -54,14 +54,9 @@ export const restaurantController = {
       const { id } = req.params;
       const inputData = req.body;
       const restaurant = await Restaurant.findByPk(id);
-      if(!restaurant){
-        return res.status(404).json({error: 'le restaurant na pas été rouvé'});
-      }
-
-      if (!inputData.name) {
-        return res.status(400).json({ error: "Le nom est manquant" });
-      }
       
+      await restaurantUpdateSchema.validateAsync(inputData);
+
       await restaurant.update(inputData);
   
       res.json(restaurant);

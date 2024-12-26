@@ -10,11 +10,13 @@ export const router = new Router();
 
 
 
-router.get('/restaurants/', restaurantController.getAllRestaurants );
-router.get('/restaurant/:id(\\d+)', restaurantController.getOneRestaurant );
-router.post('/restaurant/', restaurantController.createRestaurant );
-router.delete('/restaurant/:id(\\d+)', restaurantController.deleteRestaurant );
-router.patch('/restaurant/:id(\\d+)', restaurantController.updateRestaurant );
+router.route('/restaurant/')
+  .get(restaurantController.getAllRestaurants )
+  .post(restaurantController.createRestaurant );
+router.route('/restaurant/:id(\\d+)')
+  .get(restaurantController.getOneRestaurant)
+  .delete(restaurantController.deleteRestaurant)
+  .patch(restaurantController.updateRestaurant);
 
 
 router.get('/desserts/', dessertController.getAllDesserts );
