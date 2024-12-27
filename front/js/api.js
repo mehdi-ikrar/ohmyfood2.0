@@ -1,19 +1,19 @@
-const apiBaseUrl = "http://localhost:3000/restaurant";
+
+const apiBaseUrl = await fetch ("http://localhost:3000/restaurant");
+
+const restaurant = await apiBaseUrl.json();
+
+const restaurantimg = restaurant[0].image;
 
 
+const imagePath = "../images/" + restaurantimg;
+console.log(imagePath);
 
-export const api = {
-  async fetchAllPokemons() {
-    try {
-      //On appel l'API avec fetch (defaut = GET) pour récupérer la liste de tous les pokemons
-      const httpResponses = await fetch(apiBaseUrl);
-      //Si le status de la réponse n'est pas 20X alors on retourne null
-      if (!httpResponses.ok) return null;
-      //Sinon on cast la réponse vers du JSON, et on retourne le tout.
-      const restaurant = await httpResponses.json();
-      return restaurant;
-    } catch (error) {
-      console.log(error);
-    }
-}};
+const firstRestaurantCard = document.querySelector('.restaurant__card');
+
+
+const firstRestaurantImage = firstRestaurantCard.querySelector('img');
+const firstRestaurantName = firstRestaurantCard.querySelector('h3');
+firstRestaurantName.textContent = restaurant[3].name
+firstRestaurantImage.src = imagePath;
 

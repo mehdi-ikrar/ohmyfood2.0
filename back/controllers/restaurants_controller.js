@@ -1,12 +1,12 @@
 import { Restaurant } from '../models/associations.js';
 import { restaurantCreateSchema,restaurantUpdateSchema } from '../schema/restaurant.schema.js';
+import sanitizeHtml from 'sanitize-html';
+
 
 
 export const restaurantController = {
 
 
-
-  
   async getAllRestaurants(req, res) {
     const restaurants = await Restaurant.findAll();
     res.status(200).json(restaurants);
@@ -26,7 +26,6 @@ export const restaurantController = {
 
     const inputData = req.body;
 
-    // Validation des données
     await restaurantCreateSchema.validateAsync(inputData);
 
     // Création du restaurant

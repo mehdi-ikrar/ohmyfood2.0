@@ -1,10 +1,10 @@
 
 -- Insertion des données dans la table restaurants
 INSERT INTO restaurant (name, city, image) VALUES
-('La palette du goût', 'Le Canal Saint-Martin', 'images/La_palette_du_gout.jpg'),
-('Le délice des sens', 'Montmartre', 'images/Le_delice_des_sens.jpg'),
-('La note enchantée', 'Saint-Germain-des-Prés', 'images/la_note_enchantee.jpg'),
-('À la française', 'Le Quartier Latin', 'images/a_la_francaise.jpg');
+('La palette du goût', 'Le Canal Saint-Martin', 'La_palette_du_gout.jpg'),
+('Le délice des sens', 'Montmartre', 'Le_delice_des_sens.jpg'),
+('La note enchantée', 'Saint-Germain-des-Prés', 'la_note_enchantee.jpg'),
+('À la française', 'Le Quartier Latin', 'a_la_francaise.jpg');
 
 -- Insertion des entrées (starter)
 INSERT INTO starter (restaurant_id, name, description, price) VALUES
