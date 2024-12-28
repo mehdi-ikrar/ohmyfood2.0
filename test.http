@@ -10,13 +10,13 @@ POST   http://localhost:3000/restaurant
 Content-Type: application/json
 
 {
-  "name": "w<x<wx>>",
-  "city": "ssffgdfgsd",
-  "image": "sfsvbdfdfsd"
+  "name": "sqdqsd",
+  "city": "sscxwdfgsd",
+  "image": "sfsvxwcwxbdfdfsd"
 }
 
 ### Creer un restaurant 
-DELETE http://localhost:3000/restaurant/9
+DELETE http://localhost:3000/restaurant/19
 Content-Type: application/json
 
 ### Modifier un restaurant

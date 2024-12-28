@@ -43,7 +43,7 @@
                         <p> Explorez nos restaurants</p>
                     </div>
                 </a>
-            </div>
+
  
             <nav class="navigation">
                 <h2>Fonctionnement</h2>
@@ -64,20 +64,45 @@
                         <p class="navigation__list_txt">Degustez au restaurants</p>
                     </li>
 
+                    <li class="navigation__liste new__post__form">
+                        <button class="navigation__button">
+                            <p class="number">4</p>
+                            <i class="fas fa-plus"></i>
+                            <p class="navigation__list_txt">Ajoutez un restaurant</p>
+                        </button>
+                    </li>
+
+
                 </ol>
             </nav>
         </aside>
 
+    </div>
+    <form action="" id="new__post__form">
+        <legend>Restaurant</legend>
+        <label for="name">Nom du restaurant :</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="city">ville  du restaurant :</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="image">Image du restaurant (URL) :</label>
+        <input type="text" id="image" name="image" required>
+
+        <button type="submit">Ajouter le restaurant</button>
+    </form>
         <section class="section__restaurant">
             <h2>Restaurants</h2>
             <div
                 id="restaurants-container">
             </div>
             <div class="restaurant__card_content">
-                
+
             </div>
 
         </section>
+
+        
 
         <footer class="footer">
             <h3>ohmyfood</h3>
@@ -113,6 +138,10 @@
                         </div>
                     </div>
                 </a>
+        
+                <!-- Ajout du bouton Supprimer -->
+                <button class="restaurant__card__modif-button">modifier</button>
+                <button class="restaurant__card__delete-button">Supprimer</button>
             </div>
         </template>
 

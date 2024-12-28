@@ -1,6 +1,6 @@
 import { Restaurant } from '../models/associations.js';
 import { restaurantCreateSchema,restaurantUpdateSchema } from '../schema/restaurant.schema.js';
-import sanitizeHtml from 'sanitize-html';
+
 
 
 

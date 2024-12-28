@@ -34,3 +34,5 @@ heartIcons.forEach(icon => {
         icon.style.webkitTextFillColor = 'transparent';
     });
 });
+
+
