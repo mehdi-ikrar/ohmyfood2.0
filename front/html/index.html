@@ -70,70 +70,11 @@
 
         <section class="section__restaurant">
             <h2>Restaurants</h2>
+            <div
+                id="restaurants-container">
+            </div>
             <div class="restaurant__card_content">
-                <div class="restaurant__card">             
-                    <a href="restaurant.html">
-                        <img src="images/La_palette_du_gout.jpg" alt="">
-                        <div class="bloctxt">
-                            <div class="restaurant__card__txt"> 
-                                <h3>La palette du gout </h3>
-                                <p>Ménilmontant</p>
-                            </div>
-                            <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-    
-                <div class="restaurant__card">           
-                    <a href="la_note_enchantee.html">
-                        <img src="images/La_note_enchantee.jpg" alt="">
-                        <div class="restaurant__card__description" >
-                            <div class="bloctxt">
-                                <div class="restaurant__card__txt"> 
-                                    <h3>La note enchanté</h3>
-                                    <p>Charonne</p>
-                                </div>
-                                <div class="restaurant__card__heart">
-                                    <p class="menu__card__news">Nouveau</p>
-                                    <i class="far fa-heart"></i>
-                                </div>
-                            </div>
-                        </div> 
-                    </a>
-                </div>
-                <div class="restaurant__card">
-                    <a href="a_la_francaise.html">
-                        <img src="images/A_la_francaise.jpg" alt="">
-                        <div class="bloctxt">
-                            <div class="restaurant__card__txt"> 
-                                <h3>A la francaise</h3>
-                                <p>Cité rouge</p>
-                            </div>
-                            <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="restaurant__card">
-                    <a href="le_delice_des_sens.html">
-                        <img src="images/Le_delice_des_sens.jpg" alt="">
-                        <div class="bloctxt">
-                            <div class="restaurant__card__txt"> 
-                                <h3>Le delices des sens</h3>
-                                <p>Folle-melicourt</p>
-                            </div>
-                            <div class="restaurant__card__heart">
-                                <p class="menu__card__news">Nouveau</p>
-                                <i class="far fa-heart"></i>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                
             </div>
 
         </section>
@@ -155,5 +96,26 @@
                 </li>
             </ul>
         </footer>
+
+
+        <template id="restaurant__card__template">
+            <div class="restaurant__card">
+                <a href="le_delice_des_sens.html">
+                    <img slot="restaurant__img" src="images/Le_delice_des_sens.jpg"  alt="">
+                    <div class="bloctxt">
+                        <div class="restaurant__card__txt"> 
+                            <h3 slot="restaurant__name"> Le delices des sens</h3>
+                            <p slot="restaurant__city" >Folle-melicourt</p>
+                        </div>
+                        <div class="restaurant__card__heart">
+                            <p class="menu__card__news">Nouveau</p>
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </template>
+
+
     </body>
 </html>
