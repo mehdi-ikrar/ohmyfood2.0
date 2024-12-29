@@ -31,28 +31,62 @@ for (let restaurant of restaurants) {
 
 
 // cree un nouveau restaurant 
-const newPostElement = document.getElementsByClassName("new__post__form")
-const showFormButton = document.querySelector("#showFormButton");
+// Sélectionner le formulaire et le bouton d'affichage du formulaire
+const newPostElement = document.querySelector("#new__post__form");
+const closeModalelement = document.querySelectorAll(".close");
+const showFormButton = document.querySelector(".showFormButton");  // Utilisez querySelector ici
+
+
+
+
+
+
+function openAddRestaurantsModal (){
+    const addListModalElement = document.querySelector("#add-list-modal");
+    addListModalElement.show();
+}
 
 showFormButton.addEventListener("click", () => {
-    // Basculer la classe "hidden" sur le formulaire
-    newPostElement.classList.toggle("hidden");
+    openAddRestaurantsModal();
 });
 
-newPostElement.addEventListener ("submit" , async (event) =>{
+
+
+
+
+
+
+
+
+for (const button of closeModalelement){
+    button.addEventListener("click", closeModal);
+}
+
+function closeModal(){
+    const modaleElement = document.querySelector("dialog[open]");
+    modaleElement.close();
+}
+
+
+
+
+
+
+// Soumettre le formulaire
+newPostElement.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const newPost = Object.fromEntries(new FormData(newPostElement))
+    const newPost = Object.fromEntries(new FormData(newPostElement));
     console.log(newPost);
-    const apiBaseUrlPost = await fetch ("http://localhost:3000/restaurant", {
+
+    const apiBaseUrlPost = await fetch("http://localhost:3000/restaurant", {
         method: "POST",
         body: JSON.stringify(newPost),
-        headers: {"content-type": "application/json"}
+        headers: { "content-type": "application/json" },
     });
-    const createdrestaurant = await apiBaseUrlPost.json();
-    console.log(createdrestaurant);
 
-
+    const createdRestaurant = await apiBaseUrlPost.json();
+    console.log(createdRestaurant);
 
     // Sélectionner le template
     const restaurantTemplate = document.querySelector("#restaurant__card__template");
@@ -61,16 +95,14 @@ newPostElement.addEventListener ("submit" , async (event) =>{
     const restaurantClone = restaurantTemplate.content.cloneNode(true);
 
     // Renseigner les données
-    restaurantClone.querySelector("[slot='restaurant__name']").textContent = createdrestaurant.name;
-    restaurantClone.querySelector("img[slot='restaurant__img']").src = "../images/" + createdrestaurant.image;
-    restaurantClone.querySelector("[slot='restaurant__city']").textContent = createdrestaurant.city;
+    restaurantClone.querySelector("[slot='restaurant__name']").textContent = createdRestaurant.name;
+    restaurantClone.querySelector("img[slot='restaurant__img']").src = "../images/" + createdRestaurant.image;
+    restaurantClone.querySelector("[slot='restaurant__city']").textContent = createdRestaurant.city;
 
     // Ajouter le clone au conteneur
-    document.querySelector("#restaurants-container").prepend(restaurantClone);
-
-
-    
+    document.querySelector("#restaurants-container").appendChild(restaurantClone);
 });
+
 
 
 // afficher le nouveau restaurant sans recharger 

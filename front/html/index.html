@@ -25,7 +25,7 @@
           </div>
         <header class="header__restaurant">
             <h1 class="header__logo__content">
-                <img class="header__logo" src="images/logo.png" alt="logo du site ohmyfood">
+                <img class="header__logo" src="../images/logo.png" alt="logo du site ohmyfood">
             </h1>
             <div class="header__location">
                 <div class="header__location__maps">
@@ -64,7 +64,7 @@
                         <p class="navigation__list_txt">Degustez au restaurants</p>
                     </li>
 
-                    <li class="navigation__liste new__post__form">
+                    <li class="navigation__liste showFormButton">
                         <button class="navigation__button">
                             <p class="number">4</p>
                             <i class="fas fa-plus"></i>
@@ -78,17 +78,87 @@
         </aside>
 
     </div>
-    <form action="" id="new__post__form">
+    
+
+    <dialog id="add-list-modal">
+        <div class="modal is-active">
+          <div class="modal-background close"></div>
+          <div class="modal-card">
+            <form  action="" id="new__post__form" >
+
+              <div class="modal-card-head">
+                <p class="modal-card-title">Ajouter une liste</p>
+                <button class="delete close"  type="button" aria-label="close"><i class="fas fa-times"></i></button>
+              </div>
+      
+              <div class="modal-card-body">
+                <label for="name">Nom du restaurant :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="city">Ville du restaurant :</label>
+                <input type="text" id="city" name="city" required>
+
+                <label for="image">Image du restaurant (URL) :</label>
+                <input type="text" id="image" name="image" required>
+              </div>
+      
+              <div class="modal-card-foot">
+                <div class="buttons">
+                  <button class="button is-success">Ajouter</button>
+                  <button class="button close" type="button">Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    
+      <dialog id="modif-restaurant-modal">
+        <div class="modal is-active">
+          <div class="modal-background close"></div>
+          <div class="modal-card">
+            <form>
+
+              <div class="modal-card-head">
+                <p class="modal-card-title">Ajouter une liste</p>
+                <button class="delete close"  type="button" aria-label="close"><i class="fas fa-times"></i></button>
+              </div>
+      
+              <div class="modal-card-body">
+                <label for="name">Nom du restaurant :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="city">Ville du restaurant :</label>
+                <input type="text" id="city" name="city" required>
+
+                <label for="image">Image du restaurant (URL) :</label>
+                <input type="text" id="image" name="image" required>
+              </div>
+      
+              <div class="modal-card-foot">
+                <div class="buttons">
+                  <button class="button is-success">Ajouter</button>
+                  <button class="button close" type="button">Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    
+
+
+    <form>
         <legend>Restaurant</legend>
         <label for="name">Nom du restaurant :</label>
         <input type="text" id="name" name="name" required>
-
-        <label for="city">ville  du restaurant :</label>
+    
+        <label for="city">Ville du restaurant :</label>
         <input type="text" id="city" name="city" required>
-
+    
         <label for="image">Image du restaurant (URL) :</label>
         <input type="text" id="image" name="image" required>
-
+    
         <button type="submit">Ajouter le restaurant</button>
     </form>
         <section class="section__restaurant">
@@ -102,7 +172,8 @@
 
         </section>
 
-        
+
+
 
         <footer class="footer">
             <h3>ohmyfood</h3>
@@ -131,17 +202,21 @@
                         <div class="restaurant__card__txt"> 
                             <h3 slot="restaurant__name"> Le delices des sens</h3>
                             <p slot="restaurant__city" >Folle-melicourt</p>
+                            
                         </div>
                         <div class="restaurant__card__heart">
                             <p class="menu__card__news">Nouveau</p>
                             <i class="far fa-heart"></i>
                         </div>
+                        
                     </div>
+                    
+
                 </a>
         
                 <!-- Ajout du bouton Supprimer -->
-                <button class="restaurant__card__modif-button">modifier</button>
-                <button class="restaurant__card__delete-button">Supprimer</button>
+                <button class="restaurant__card__modif-button" > <i class="fas fa-pencil-alt"></i></button>
+                <button class="restaurant__card__delete-button"><i class="fas fa-trash"></i></button>
             </div>
         </template>
 
