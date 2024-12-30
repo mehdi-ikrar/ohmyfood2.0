@@ -113,14 +113,16 @@
         </div>
       </dialog>
     
+
+
       <dialog id="modif-restaurant-modal">
         <div class="modal is-active">
           <div class="modal-background close"></div>
           <div class="modal-card">
-            <form>
+            <form action="" id="modif__post__form" >
 
               <div class="modal-card-head">
-                <p class="modal-card-title">Ajouter une liste</p>
+                <p class="modal-card-title">modifier un restaurant</p>
                 <button class="delete close"  type="button" aria-label="close"><i class="fas fa-times"></i></button>
               </div>
       
@@ -133,11 +135,12 @@
 
                 <label for="image">Image du restaurant (URL) :</label>
                 <input type="text" id="image" name="image" required>
+                <input id="edit__restaurant__id"type="hidden" name="id">
               </div>
       
               <div class="modal-card-foot">
                 <div class="buttons">
-                  <button class="button is-success">Ajouter</button>
+                  <button class="button is-success">Enregistrer les modification</button>
                   <button class="button close" type="button">Annuler</button>
                 </div>
               </div>
@@ -148,19 +151,7 @@
     
 
 
-    <form>
-        <legend>Restaurant</legend>
-        <label for="name">Nom du restaurant :</label>
-        <input type="text" id="name" name="name" required>
-    
-        <label for="city">Ville du restaurant :</label>
-        <input type="text" id="city" name="city" required>
-    
-        <label for="image">Image du restaurant (URL) :</label>
-        <input type="text" id="image" name="image" required>
-    
-        <button type="submit">Ajouter le restaurant</button>
-    </form>
+
         <section class="section__restaurant">
             <h2>Restaurants</h2>
             <div

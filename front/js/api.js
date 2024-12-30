@@ -1,20 +1,22 @@
 
-const apiBaseUrl = await fetch ("http://localhost:3000/restaurant");
+const apiBaseUrl = await fetch ("http://localhost:3000/restaurant/");
 
 const restaurants = await apiBaseUrl.json();
 
 
+const newPostElement = document.querySelector("#new__post__form");
+const closeModalelement = document.querySelectorAll(".close");
+const showFormButton = document.querySelector(".showFormButton");  // Utilisez querySelector ici
 
 
 //const restaurantImages = "../images/" + restaurantimg;
 
 
 // injecte les restaurant dans le dom
-for (let restaurant of restaurants) {
-    // Sélectionner le template
-    const restaurantTemplate = document.querySelector("#restaurant__card__template");
+let currentRestaurant = null; // Variable pour suivre le restaurant en cours d'édition
 
-    // Créer un clone du template
+for (let restaurant of restaurants) {
+    const restaurantTemplate = document.querySelector("#restaurant__card__template");
     const restaurantClone = restaurantTemplate.content.cloneNode(true);
 
     // Renseigner les données
@@ -22,19 +24,67 @@ for (let restaurant of restaurants) {
     restaurantClone.querySelector("img[slot='restaurant__img']").src = "../images/" + restaurant.image;
     restaurantClone.querySelector("[slot='restaurant__city']").textContent = restaurant.city;
 
+    // Ajouter l'écouteur d'événement au bouton "Modifier"
+    const modifButton = restaurantClone.querySelector(".restaurant__card__modif-button");
+    modifButton.addEventListener("click", () => {
+        currentRestaurant = restaurant; // Mémorisez le restaurant sélectionné
+
+        const addListModalform = document.querySelector("#modif__post__form");
+
+        // Préremplir le formulaire avec les données du restaurant
+        addListModalform.querySelector("#name").value = restaurant.name;
+        addListModalform.querySelector("#city").value = restaurant.city;
+        addListModalform.querySelector("#image").value = restaurant.image;
+        addListModalform.querySelector("#edit__restaurant__id").value = restaurant.id;
+
+        // Afficher le modal
+        const addListModalElement = document.querySelector("#modif-restaurant-modal");
+        addListModalElement.showModal();
+    });
+
     // Ajouter le clone au conteneur
     document.querySelector("#restaurants-container").appendChild(restaurantClone);
 }
 
+// Ajoutez un écouteur pour soumettre le formulaire
+const addListModalform = document.querySelector("#modif__post__form");
+addListModalform.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-//afficher le formulaire 
+    // Vérification du restaurant sélectionné
+    if (!currentRestaurant || !currentRestaurant.id) {
+        console.error("Aucun restaurant sélectionné pour la modification.");
+        return;
+    }
+
+    // Récupérer les données du formulaire
+    const formData = new FormData(addListModalform);
+    const editedList = Object.fromEntries(formData);
+
+    // Supprimer l'ID (le cas échéant)
+    delete editedList.id;
+
+    console.log("Form submitted with data:", editedList);
+
+    // Envoi des données modifiées à l'API
+    const response = await fetch(`http://localhost:3000/restaurant/${currentRestaurant.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(editedList),  // Corps sans l'ID
+        headers: { "Content-Type": "application/json" },
+    });
 
 
-// cree un nouveau restaurant 
-// Sélectionner le formulaire et le bouton d'affichage du formulaire
-const newPostElement = document.querySelector("#new__post__form");
-const closeModalelement = document.querySelectorAll(".close");
-const showFormButton = document.querySelector(".showFormButton");  // Utilisez querySelector ici
+    const updatedRestaurant = await response.json();
+    console.log("Updated restaurant:", updatedRestaurant);
+
+    // Fermer le modal après la soumission
+    const addListModalElement = document.querySelector("#modif-restaurant-modal");
+    addListModalElement.close();
+
+});
+
+
+
 
 
 
@@ -49,11 +99,6 @@ function openAddRestaurantsModal (){
 showFormButton.addEventListener("click", () => {
     openAddRestaurantsModal();
 });
-
-
-
-
-
 
 
 
@@ -102,18 +147,4 @@ newPostElement.addEventListener("submit", async (event) => {
     // Ajouter le clone au conteneur
     document.querySelector("#restaurants-container").appendChild(restaurantClone);
 });
-
-
-
-// afficher le nouveau restaurant sans recharger 
-const suppRestaurants = document.querySelectorAll(".restaurant__card__delete-button");
-
-suppRestaurants.forEach(button => {
-    button.addEventListener("click", (event) => {
-        event.preventDefault();
-
-    });
-});
-
-
 
