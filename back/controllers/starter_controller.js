@@ -4,9 +4,15 @@ import { dishCreateSchema,dishUpdateSchema } from '../schema/dish.schema.js';
 export const starterController = {
 
   
-  async getAllStarters(req, res) {
-    const starters = await Starter.findAll();
-    res.status(200).json(starters);
+  async getAllStarters() {
+    try {
+      // Récupérer les starters depuis la base de données
+      const starters = await Starter.findAll();
+      return starters; // Retourner les données
+    } catch (error) {
+      console.error("Erreur dans getAllStarters:", error);
+      throw error; // Relancer l'erreur pour qu'elle soit gérée par l'appelant
+    }
   },
 
   async getOneStarter(req, res){

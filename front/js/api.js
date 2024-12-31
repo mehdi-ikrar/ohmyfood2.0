@@ -24,27 +24,49 @@ for (let restaurant of restaurants) {
     restaurantClone.querySelector("img[slot='restaurant__img']").src = "../images/" + restaurant.image;
     restaurantClone.querySelector("[slot='restaurant__city']").textContent = restaurant.city;
 
-    // Ajouter l'écouteur d'événement au bouton "Modifier"
+    const restaurantLink = restaurantClone.querySelector("a");
+    restaurantLink.href = `restaurant.html?id=${restaurant.id}`;
+
+    // Enregistrer le nom et l'image dans le Local Storage au clic
+    restaurantLink.addEventListener("click", () => {
+        const restaurantData = {
+            name: restaurant.name,
+            image: restaurant.image,
+        };
+        localStorage.setItem("selectedRestaurant", JSON.stringify(restaurantData));
+    });
+
     const modifButton = restaurantClone.querySelector(".restaurant__card__modif-button");
     modifButton.addEventListener("click", () => {
-        currentRestaurant = restaurant; // Mémorisez le restaurant sélectionné
+        currentRestaurant = restaurant;
 
         const addListModalform = document.querySelector("#modif__post__form");
 
-        // Préremplir le formulaire avec les données du restaurant
         addListModalform.querySelector("#name").value = restaurant.name;
         addListModalform.querySelector("#city").value = restaurant.city;
         addListModalform.querySelector("#image").value = restaurant.image;
-        addListModalform.querySelector("#edit__restaurant__id").value = restaurant.id;
 
-        // Afficher le modal
         const addListModalElement = document.querySelector("#modif-restaurant-modal");
         addListModalElement.showModal();
     });
 
-    // Ajouter le clone au conteneur
+    const suppButton = restaurantClone.querySelector(".restaurant__card__delete-button");
+    suppButton.addEventListener("click", () => {
+        currentRestaurant = restaurant;
+        const suppListModalform = document.querySelector("#supp__post__form");
+
+        suppListModalform.querySelector(".modal-card-message").innerHTML =
+            "êtes-vous sûr de vouloir supprimer le restaurant " + restaurant.name;
+        const suppListModalElement = document.querySelector("#surpp-restaurant-modal");
+        suppListModalElement.showModal();
+    });
+
     document.querySelector("#restaurants-container").appendChild(restaurantClone);
 }
+
+
+
+
 
 // Ajoutez un écouteur pour soumettre le formulaire
 const addListModalform = document.querySelector("#modif__post__form");
@@ -87,6 +109,30 @@ addListModalform.addEventListener("submit", async (event) => {
 
 
 
+const deleteListModalform = document.querySelector("#supp__post__form");
+deleteListModalform.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!currentRestaurant || !currentRestaurant.id) {
+        console.error("Aucun restaurant sélectionné pour la modification.");
+        return;
+    }
+
+    const formData = new FormData(deleteListModalform);
+    const editedList = Object.fromEntries(formData);
+
+    delete editedList.id;
+
+
+    console.log("Form submitted with data:", editedList);
+
+
+    const response = await fetch(`http://localhost:3000/restaurant/${currentRestaurant.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+    });
+
+});
 
 
 
@@ -147,4 +193,9 @@ newPostElement.addEventListener("submit", async (event) => {
     // Ajouter le clone au conteneur
     document.querySelector("#restaurants-container").appendChild(restaurantClone);
 });
+
+
+// pâ
+
+
 

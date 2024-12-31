@@ -6,9 +6,15 @@ export const mainController = {
 
 
   
-  async getAllMains(req, res) {
-    const mains = await Main.findAll();
-    res.status(200).json(mains);
+  async getAllMain() {
+    try {
+      // Récupérer les starters depuis la base de données
+      const mains = await Main.findAll();
+      return mains; // Retourner les données
+    } catch (error) {
+      console.error("Erreur dans getAllStarters:", error);
+      throw error; // Relancer l'erreur pour qu'elle soit gérée par l'appelant
+    }
   },
 
   async getOneMain(req, res){

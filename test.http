@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Creer un restaurant 
-DELETE http://localhost:3000/restaurant/25
+DELETE http://localhost:3000/restaurant/32
 Content-Type: application/json
 
 ### Modifier un restaurant
@@ -163,3 +163,8 @@ Content-Type: application/json
 
 ### Récupération mauvais tarter
 GET   http://localhost:3000/str
+
+
+
+### Récupération de tout les desserts 
+GET   http://localhost:3000/menu

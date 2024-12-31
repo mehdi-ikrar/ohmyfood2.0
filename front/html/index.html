@@ -148,19 +148,44 @@
           </div>
         </div>
       </dialog>
+
+
+
+
+      <dialog id="surpp-restaurant-modal">
+        <div class="modal is-active">
+          <div class="modal-background close"></div>
+          <div class="modal-card">
+            <form action="" id="supp__post__form" >
+
+              <div class="modal-card-head">
+                <p class="modal-card-title">supprimer un restaurant</p>
+                <button class="delete close"  type="button" aria-label="close"><i class="fas fa-times"></i></button>
+              </div>
+      
+              <div class="modal-card-body">
+                <p class="modal-card-message"> </p>
+              </div>
+      
+              <div class="modal-card-foot">
+                <div class="buttons">
+                  <button class="button is-success">Supprimer le restraurant</button>
+                  <button class="button close" type="button">Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </dialog>
     
 
 
 
         <section class="section__restaurant">
             <h2>Restaurants</h2>
-            <div
-                id="restaurants-container">
+            <div id="restaurants-container">
+              
             </div>
-            <div class="restaurant__card_content">
-
-            </div>
-
         </section>
 
 
@@ -187,7 +212,7 @@
 
         <template id="restaurant__card__template">
             <div class="restaurant__card">
-                <a href="le_delice_des_sens.html">
+                <a href="restaurant.html">
                     <img slot="restaurant__img" src="images/Le_delice_des_sens.jpg"  alt="">
                     <div class="bloctxt">
                         <div class="restaurant__card__txt"> 
@@ -201,13 +226,14 @@
                         </div>
                         
                     </div>
-                    
-
                 </a>
+                <div>
+                  <button class="restaurant__card__modif-button" > <i class="fas fa-pencil-alt"></i></button>
+                  <button class="restaurant__card__delete-button"><i class="fas fa-trash"></i></button>
+                </div>
         
-                <!-- Ajout du bouton Supprimer -->
-                <button class="restaurant__card__modif-button" > <i class="fas fa-pencil-alt"></i></button>
-                <button class="restaurant__card__delete-button"><i class="fas fa-trash"></i></button>
+
+
             </div>
         </template>
 

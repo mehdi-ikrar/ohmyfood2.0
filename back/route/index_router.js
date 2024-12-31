@@ -4,6 +4,7 @@ import { dessertController } from '../controllers/dessert_controller.js';
 import { starterController } from '../controllers/starter_controller.js';
 import { mainController } from '../controllers/main_controller.js';
 import { controllerWrapper} from '../middlewares/controller_wrapper.js';
+import { getMenuController } from '../controllers/menu_controller.js';
 
 export const router = new Router();
 
@@ -32,7 +33,9 @@ router.route('/starter/:id(\\d+)')
 
 router.route('/main/')
   .get( controllerWrapper(mainController.getAllMains ))
-  .post( controllerWrapper(mainController.createMain));
+  .post( controllerWrapper(mainController.createMain))
+  .get( controllerWrapper(starterController.getAllStarters ))
+  .post( controllerWrapper(dessertController.createDessert));
 router.route('/main/:id(\\d+)')
   .get(controllerWrapper(mainController.getOneMain))
   .delete(controllerWrapper(mainController.deleteMain))
@@ -47,7 +50,8 @@ router.route('/dessert/:id(\\d+)')
   .delete(controllerWrapper(dessertController.deleteDessert))
   .patch(controllerWrapper(dessertController.updateDessert));
 
-
+router.route('/menu/')
+  .get( controllerWrapper(getMenuController.getMenu));
 
 router.use((req, res) => {
   res.status(404).json({error: 'Not found'});

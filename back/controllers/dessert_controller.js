@@ -6,9 +6,15 @@ export const dessertController = {
 
 
   
-  async getAllDesserts(req, res) {
-    const desserts = await Dessert.findAll();
-    res.status(200).json(desserts);
+  async getAllDesserts() {
+    try {
+      // Récupérer les starters depuis la base de données
+      const desserts = await Dessert.findAll();
+      return desserts; // Retourner les données
+    } catch (error) {
+      console.error("Erreur dans getAllStarters:", error);
+      throw error; // Relancer l'erreur pour qu'elle soit gérée par l'appelant
+    }
   },
 
   async getOneDessert(req, res){
