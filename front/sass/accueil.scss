@@ -89,7 +89,7 @@
 \*------------------------------------*/
 
 
-.header__menu {
+.header__menu  {
     display: flex;
     justify-content: center; /* Pour centrer tous les éléments */
     align-items: center;     /* Pour aligner les éléments verticalement */
@@ -109,13 +109,17 @@
 
     .header__logo__content {
         text-align: center;
-        width: 100%;
+
+        
         .header__logo {
             width: 100%;
             padding: 0.3em;
+            
+            
         }
     }
 }
+
 figure{
     width: 100%;
     margin:0px ;
@@ -162,7 +166,7 @@ aside{
     .aside__discovery{
         width: 100%;
         padding-top: 50px;
-        padding-bottom: 80px;
+        padding-bottom: 20px;
         text-align: center;
         background: $primary;
         @media #{$medium-down} {
@@ -280,6 +284,8 @@ aside{
 .section__restaurant{
     max-width: $max-width;
     margin: auto;
+    box-shadow: $shadow;
+    margin-bottom: 86px;
 
     h2{
         padding-left: 65px;
@@ -356,13 +362,14 @@ aside{
 
 .section__menu{
     position: relative;
-    bottom: 80px;
+    bottom: 160px;
     width: 80%;
     max-width: 1280px;
     margin: auto;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     background-color:$primary;
+    box-shadow: $shadow;
     margin-bottom: -80px;
     padding-bottom: 55px;
     padding-top: 35px;
@@ -400,7 +407,7 @@ aside{
 .menu__card__container{
     display: flex;
     height: 500px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
     @media #{$medium-down} {
         flex-direction: column;
@@ -413,6 +420,7 @@ aside{
         justify-content: space-between;
         margin: auto;
         width: 30%;
+
         &:nth-child(1){
             animation: itemAppear 0.8s;
             animation-timing-function: cubic-bezier(.5,1.58,.75,.92);
@@ -450,17 +458,24 @@ aside{
     color: black;
     padding-left: 15px;
     overflow: hidden;
-    &:hover > .pricecheck > .menu__card__check {
-        display: flex;
-        animation: appear 0.4s ease-in-out;
-        animation-timing-function: cubic-bezier(.45,.09,.65,1);
+
+    //&:hover > .pricecheck > .menu__card__check {
+        //display: flex;
+        //animation: appear 0.4s ease-in-out;
+        //animation-timing-function: cubic-bezier(.45,.09,.65,1);
         
-    }
+    //}
     @media #{$medium-down} {
         width: 87%;
         margin-bottom: 25px;
     }
-    .menu__card__price {
+    p:nth-child(3) {
+
+    }
+}
+.pricecheck{
+    display: flex;
+    p{
         display: flex;
         font-size: 0.9em;
         font-weight: bold;
@@ -469,16 +484,15 @@ aside{
         margin-top: 50px;
         padding-right: 5px;
     }
-}
-.pricecheck{
-    display: flex;
+    
+    
 }
 
 .menu__card__check{
     background-color: $secondary;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    display: none;
+    visibility: hidden;
     align-items: center;
     overflow: hidden;
     .fa-check-circle {
@@ -489,21 +503,32 @@ aside{
         
     }
 }
-.menu__card__description{
+.menu__card__description {
     overflow: hidden;
     text-overflow: ellipsis; 
     white-space: nowrap;
-    .menu__card__titledescription{
-        overflow: hidden;
-        text-overflow: ellipsis; 
-        font-weight: bold;
-        font-size: 1em;
+  
+    p:nth-child(1) {
+      overflow: hidden;
+      text-overflow: ellipsis; 
+      font-weight: bold;
+      font-size: 1em;
     }
-    .menu__card__subdescription{
-        font-size: 0.9em;
-        overflow: hidden;
-        text-overflow: ellipsis; 
+  
+    p:nth-child(2) {
+      font-size: 0.9em;
+      overflow: hidden;
+      text-overflow: ellipsis; 
     }
+  }
+
+
+#starter__container , #main__container , #dessert__container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+
 }
 
 /*------------------------------------*\

@@ -1,5 +1,4 @@
 import { mainController } from "./main_controller.js";
-import { restaurantController } from "./restaurants_controller.js";
 import { starterController } from "./starter_controller.js";
 import { dessertController } from './dessert_controller.js';
 

@@ -1,67 +1,72 @@
-// Récupérer l'ID du restaurant depuis l'URL
+import { animationLike } from "./main.js";
+import { apiBaseUrl } from "./config.js";
+
+
+
 const params = new URLSearchParams(window.location.search);
-const restaurantId = params.get('id');  // L'ID du restaurant dans l'URL
+const restaurantId = params.get('id');
 
 
 
-const storedData = localStorage.getItem("selectedRestaurant");
-const  restaurantName = document.querySelector('.menu__title');
-console.log(storedData);
+const storedData = JSON.parse(localStorage.getItem("selectedRestaurant"));
+const restaurantName = document.querySelector('.menu__title');
+const restaurantImage = document.querySelector('.figure__img');
 
+restaurantImage.src = "../images/" + storedData.image;
 restaurantName.textContent = storedData.name;
-// Vérifier si restaurantId est valide
+
+
 if (restaurantId) {
     // Récupérer les données du menu
-    fetch("http://localhost:3000/menu/")
+    fetch(`${apiBaseUrl}/menu/`)
         .then(response => response.json())
         .then(data => {
             console.log("Données brutes reçues :", data);
 
-            // Récupérer les tableaux nécessaires
+            // Fonction générique pour traiter les éléments filtrés et les afficher
+            const renderMenuItems = (items, templateSelector, containerSelector, modalSelector) => {
+                const container = document.querySelector(containerSelector);
+                const template = document.querySelector(templateSelector);
+
+                items.forEach(item => {
+                    const clone = template.content.cloneNode(true);
+
+                    clone.querySelector("[slot*='name']").textContent = item.name;
+                    clone.querySelector("[slot*='description']").textContent = item.description;
+                    clone.querySelector("[slot*='price']").textContent = item.price;
+
+                    // Ajouter un gestionnaire pour le bouton de modification
+                    clone.querySelector(".menu__card__modif-button").addEventListener('click', () => {
+                        const modal = document.querySelector(modalSelector);
+
+                        modal.querySelector("#name").value = item.name;
+                        modal.querySelector("#description").value = item.description;
+                        modal.querySelector("#price").value = item.price;
+                        modal.querySelector("#edit__restaurant__id").value = item.id;
+
+                        modal.show();
+                    });
+
+                    container.appendChild(clone);
+                });
+            };
+
+            // Récupérer et traiter les éléments pour chaque catégorie
             const starters = data.starters || [];
             const desserts = data.desserts || [];
             const mains = data.main || [];
 
-            // Filtrer les éléments qui ont le même restaurant_id que restaurantId
-            const filteredStarter = starters.filter(item => item.restaurant_id == restaurantId);
-            const filteredDessert = desserts.filter(item => item.restaurant_id == restaurantId);
-            const filteredMain = mains.filter(item => item.restaurant_id == restaurantId);
+            const filteredStarters = starters.filter(item => item.restaurant_id == restaurantId);
+            const filteredDesserts = desserts.filter(item => item.restaurant_id == restaurantId);
+            const filteredMains = mains.filter(item => item.restaurant_id == restaurantId);
 
-            console.log(filteredStarter);
-            
-            for (const filteredStarters of filteredStarter) {
-                const starterTemplate = document.querySelector("#starter__card__template");
-                const starterClone = starterTemplate.content.cloneNode(true);
+            // Appeler la fonction pour chaque catégorie
+            renderMenuItems(filteredStarters, "#starter__card__template", "#starter__container", "#modif-restaurant-modal");
+            renderMenuItems(filteredMains, "#main__card__template", "#main__container", "#modif-restaurant-modal");
+            renderMenuItems(filteredDesserts, "#dessert__card__template", "#dessert__container", "#modif-restaurant-modal");
 
-                starterClone.querySelector("[slot='starter__name']").textContent = filteredStarters.name;
-                starterClone.querySelector("[slot='starter__description']").textContent = filteredStarters.description;
-
-                document.querySelector("#starter__container").appendChild(starterClone);
-            };
-
-            for (const filteredMains of filteredMain) {
-                const mainTemplate = document.querySelector("#main__card__template");
-                const mainClone = mainTemplate.content.cloneNode(true);
-
-                mainClone.querySelector("[slot= 'main__name']").textContent = filteredMains.name;
-                mainClone.querySelector("[slot='main__description']").textContent = filteredMains.description;
-
-                document.querySelector("#main__container").appendChild(mainClone);
-            };
-
-            for (const filteredDesserts of filteredDessert) {
-                const dessertTemplate = document.querySelector("#dessert__card__template");
-                const dessertClone = dessertTemplate.content.cloneNode(true);
-
-                dessertClone.querySelector("[slot= 'dessert__name']").textContent = filteredDesserts.name;
-                dessertClone.querySelector("[slot='dessert__description']").textContent = filteredDesserts.description;
-
-                document.querySelector("#dessert__container").appendChild(dessertClone);
-            };
-
-
-            
-        // Optionnel : tu peux aussi afficher les données filtrées sur la page si nécessaire
+            // Activer les animations de like
+            animationLike();
         })
         .catch(error => {
             console.error("Erreur lors de la récupération des menus :", error);
@@ -71,28 +76,44 @@ if (restaurantId) {
 }
 
 
-// Vérifier si l'ID est présent
-/*if (restaurantId) {
-    console.log(`ID du restaurant : ${restaurantId}`);
-    
-    // Récupérer les données depuis l'API
-    fetch(`http://localhost:3000/menu/`)
-    .then(response => response.json())
-    .then(data => {
-        console.log("Données brutes reçues :", data);
-
-        // Récupérer les tableaux nécessaires
-        const starters = data.starters || [];
-        const desserts = data.desserts || [];
-        const mains = data.main || [];
-
-        // Filtrer les données en fonction de restaurantId
 
 
-    })
-    .catch(error => {
-        console.error("Erreur lors de la récupération des données :", error);
+// Fonction générique pour traiter la soumission de formulaires
+async function handleFormSubmit(formSelector, apiEndpoint) {
+    const form = document.querySelector(formSelector);
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        // Récupérer les données du formulaire
+        const formData = new FormData(form);
+        const editedList = Object.fromEntries(formData);
+
+        console.log("Form submitted with data:", editedList);
+
+        // Récupérer l'ID et le retirer de l'objet
+        const { id, ...dataWithoutId } = editedList;
+
+        try {
+            // Envoi des données modifiées à l'API sans l'ID
+            const response = await fetch(`${apiEndpoint}/${id}`, {
+                method: "PATCH",
+                body: JSON.stringify(dataWithoutId), // Corps sans l'ID
+                headers: { "Content-Type": "application/json" },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erreur lors de la mise à jour : ${response.statusText}`);
+            }
+
+            const updatedData = await response.json();
+            console.log("Updated data:", updatedData);
+        } catch (error) {
+            console.error(error.message);
+        }
     });
+}
 
 
-}*/
+handleFormSubmit("#modif__post__form", `${apiBaseUrl}/dessert`);
+handleFormSubmit("#modif__post__form", `${apiBaseUrl}/main`);
+handleFormSubmit("#modif__post__form", `${apiBaseUrl}/starter`);

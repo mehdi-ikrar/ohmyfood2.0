@@ -32,10 +32,8 @@ router.route('/starter/:id(\\d+)')
 
 
 router.route('/main/')
-  .get( controllerWrapper(mainController.getAllMains ))
-  .post( controllerWrapper(mainController.createMain))
-  .get( controllerWrapper(starterController.getAllStarters ))
-  .post( controllerWrapper(dessertController.createDessert));
+  .get( controllerWrapper(mainController.getAllMain ))
+  .post( controllerWrapper(mainController.createMain)); 
 router.route('/main/:id(\\d+)')
   .get(controllerWrapper(mainController.getOneMain))
   .delete(controllerWrapper(mainController.deleteMain))

@@ -1,7 +1,6 @@
-
-const apiBaseUrl = await fetch ("http://localhost:3000/restaurant/");
-
-const restaurants = await apiBaseUrl.json();
+import { apiBaseUrl } from "./config.js";
+const httpResponse = await fetch(`${apiBaseUrl}/restaurant/`);
+const restaurants = await httpResponse.json();
 
 
 const newPostElement = document.querySelector("#new__post__form");
@@ -67,12 +66,11 @@ for (let restaurant of restaurants) {
 
 
 
-
 // Ajoutez un écouteur pour soumettre le formulaire
-const addListModalform = document.querySelector("#modif__post__form");
-addListModalform.addEventListener("submit", async (event) => {
+const modifRestaurantModalform = document.querySelector("#modif__post__form");
+modifRestaurantModalform.addEventListener("submit", async (event) => {
     event.preventDefault();
-
+    console.log(currentRestaurant);
     // Vérification du restaurant sélectionné
     if (!currentRestaurant || !currentRestaurant.id) {
         console.error("Aucun restaurant sélectionné pour la modification.");
@@ -80,7 +78,7 @@ addListModalform.addEventListener("submit", async (event) => {
     }
 
     // Récupérer les données du formulaire
-    const formData = new FormData(addListModalform);
+    const formData = new FormData(modifRestaurantModalform);
     const editedList = Object.fromEntries(formData);
 
     // Supprimer l'ID (le cas échéant)
@@ -91,7 +89,7 @@ addListModalform.addEventListener("submit", async (event) => {
     // Envoi des données modifiées à l'API
     const response = await fetch(`http://localhost:3000/restaurant/${currentRestaurant.id}`, {
         method: "PATCH",
-        body: JSON.stringify(editedList),  // Corps sans l'ID
+        body: JSON.stringify(editedList),  
         headers: { "Content-Type": "application/json" },
     });
 
@@ -104,8 +102,6 @@ addListModalform.addEventListener("submit", async (event) => {
     addListModalElement.close();
 
 });
-
-
 
 
 
@@ -136,7 +132,6 @@ deleteListModalform.addEventListener("submit", async (event) => {
 
 
 
-
 function openAddRestaurantsModal (){
     const addListModalElement = document.querySelector("#add-list-modal");
     addListModalElement.show();
@@ -148,7 +143,6 @@ showFormButton.addEventListener("click", () => {
 
 
 
-
 for (const button of closeModalelement){
     button.addEventListener("click", closeModal);
 }
@@ -157,10 +151,6 @@ function closeModal(){
     const modaleElement = document.querySelector("dialog[open]");
     modaleElement.close();
 }
-
-
-
-
 
 
 // Soumettre le formulaire

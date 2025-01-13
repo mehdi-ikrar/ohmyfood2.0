@@ -209,7 +209,6 @@ body a:link {
 }
 .header__menu .header__logo__content {
   text-align: center;
-  width: 100%;
 }
 .header__menu .header__logo__content .header__logo {
   width: 100%;
@@ -263,7 +262,7 @@ figure .figure__img {
 aside .aside__discovery {
   width: 100%;
   padding-top: 50px;
-  padding-bottom: 80px;
+  padding-bottom: 20px;
   text-align: center;
   background: rgb(246, 246, 246);
 }
@@ -293,7 +292,7 @@ aside .aside__discovery h3 {
   text-align: center;
   margin: auto;
   width: 250px;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
   background: linear-gradient(rgb(156, 89, 220), rgb(232, 113, 218) 100%);
   transform: scale(1);
   transition: transform 400ms;
@@ -309,7 +308,7 @@ aside .aside__discovery h3 {
   text-align: center;
   margin: auto;
   width: 250px;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
   background: linear-gradient(rgb(156, 89, 220), rgb(232, 113, 218) 100%);
   transform: scale(1);
   transition: transform 400ms;
@@ -342,7 +341,7 @@ aside .aside__discovery h3 {
   border-radius: 20px;
   margin: auto;
   margin-bottom: 20px;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
   width: 25%;
 }
 .navigation__content .navigation__liste:hover {
@@ -403,6 +402,8 @@ aside .aside__discovery h3 {
 .section__restaurant {
   max-width: 1440px;
   margin: auto;
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 86px;
 }
 .section__restaurant h2 {
   padding-left: 65px;
@@ -425,7 +426,7 @@ aside .aside__discovery h3 {
   width: 40%;
   height: 250px;
   border-radius: 10px;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
 }
 @media only screen and (max-width: 1200px) {
   .restaurant__card {
@@ -477,13 +478,14 @@ aside .aside__discovery h3 {
 \*------------------------------------*/
 .section__menu {
   position: relative;
-  bottom: 80px;
+  bottom: 160px;
   width: 80%;
   max-width: 1280px;
   margin: auto;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   background-color: rgb(246, 246, 246);
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
   margin-bottom: -80px;
   padding-bottom: 55px;
   padding-top: 35px;
@@ -535,7 +537,7 @@ aside .aside__discovery h3 {
 .menu__card__container {
   display: flex;
   height: 500px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 @media only screen and (max-width: 1200px) {
   .menu__card__container {
@@ -582,7 +584,7 @@ aside .aside__discovery h3 {
   width: 90%;
   margin: auto;
   background-color: white;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem rem rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
@@ -590,18 +592,16 @@ aside .aside__discovery h3 {
   padding-left: 15px;
   overflow: hidden;
 }
-.menu__card:hover > .pricecheck > .menu__card__check {
-  display: flex;
-  animation: appear 0.4s ease-in-out;
-  animation-timing-function: cubic-bezier(0.45, 0.09, 0.65, 1);
-}
 @media only screen and (max-width: 1200px) {
   .menu__card {
     width: 87%;
     margin-bottom: 25px;
   }
 }
-.menu__card .menu__card__price {
+.pricecheck {
+  display: flex;
+}
+.pricecheck p {
   display: flex;
   font-size: 0.9em;
   font-weight: bold;
@@ -611,15 +611,11 @@ aside .aside__discovery h3 {
   padding-right: 5px;
 }
 
-.pricecheck {
-  display: flex;
-}
-
 .menu__card__check {
   background-color: rgb(153, 226, 208);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  display: none;
+  visibility: hidden;
   align-items: center;
   overflow: hidden;
 }
@@ -635,16 +631,23 @@ aside .aside__discovery h3 {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.menu__card__description .menu__card__titledescription {
+.menu__card__description p:nth-child(1) {
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: bold;
   font-size: 1em;
 }
-.menu__card__description .menu__card__subdescription {
+.menu__card__description p:nth-child(2) {
   font-size: 0.9em;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#starter__container, #main__container, #dessert__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 /*------------------------------------*\
