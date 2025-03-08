@@ -22,7 +22,6 @@ Starter.init(
   {
     sequelize,  // La connexion Sequelize
     tableName: "starter",  // Nom exact de la table en BDD
-
   }
   
 );

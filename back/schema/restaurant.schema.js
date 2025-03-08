@@ -33,9 +33,8 @@ export const restaurantUpdateSchema = Joi.object({
   image: Joi.string().min(3).max(200).messages({
     "string.min": "La ville doit contenir au moins 3 caractères.",
     "string.max": "L'image ne peut pas dépasser 50 caractères.",
-
+    
   })
 })
-  .required()
   .min(1);
     

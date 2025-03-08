@@ -1,5 +1,6 @@
 ### Récupération de tout les restaurants 
-GET   http://localhost:3000/restaurant
+GET   http://mehdi-ikrar-server.eddi.cloud:3000/game/2
+
 
 
 ### Récupération d'un restaurant
