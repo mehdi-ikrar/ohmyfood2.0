@@ -23,9 +23,9 @@
           <p class="home-hero__subtitle">
             Découvrez des restaurants d'exception, sélectionnés par nos soins.
           </p>
-          <a href="/addRestaurants" class="home-hero__cta">
+          <button id="openModal" class="home-hero__cta">
             <span>Ajoutez votre restaurant</span>
-          </a>
+          </button>
         </div>
       </section>
 
@@ -55,10 +55,14 @@
 
       <section class="section__restaurant">
         <h2>Restaurants</h2>
+        
+
+
+        <!-- Container des restaurants -->
         <div class="restaurant__card_container">
-          <% restaurants.forEach(restaurant => { %>
+          <% restaurants.forEach((restaurant) => { %>
             <div class="restaurant__card">
-              <a href="/front/restaurant.html?id=<%= restaurant.id %>">
+              <a href="/menu/<%= restaurant.id %>">
                 <img src="/images/<%= restaurant.image %>" alt="<%= restaurant.name %>">
                 <div class="bloctxt">
                   <div class="restaurant__card__txt">
@@ -74,9 +78,233 @@
             </div>
           <% }) %>
         </div>
+        
+        <!-- Pagination -->
+        <% if (pagination.totalPages > 1) { %>
+          
+        <div class="pagination">
+          <!-- Bouton Précédent -->
+          <% if (pagination.hasPrevPage) { %>
+            <a href="?page=<%= pagination.prevPage %>" class="pagination__btn pagination__btn--prev">
+              <i class="fas fa-chevron-left"></i>
+              Précédent
+            </a>
+          <% } else { %>
+            <span class="pagination__btn pagination__btn--prev pagination__btn--disabled">
+              <i class="fas fa-chevron-left"></i>
+              Précédent
+            </span>
+          <% } %>
+
+          <!-- Numéros de page -->
+          <div class="pagination__numbers">
+            <% 
+            // Calculer les pages à afficher
+            let startPage = Math.max(1, pagination.currentPage - 2);
+            let endPage = Math.min(pagination.totalPages, pagination.currentPage + 2);
+            
+            // Ajuster si on est proche du début ou de la fin
+            if (endPage - startPage < 4) {
+              if (startPage === 1) {
+                endPage = Math.min(pagination.totalPages, startPage + 4);
+              } else {
+                startPage = Math.max(1, endPage - 4);
+              }
+            }
+            %>
+            
+            <!-- Première page si pas visible -->
+            <% if (startPage > 1) { %>
+              <a href="?page=1" class="pagination__number">1</a>
+              <% if (startPage > 2) { %>
+                <span class="pagination__dots">...</span>
+              <% } %>
+            <% } %>
+            
+            <!-- Pages visibles -->
+            <% for (let i = startPage; i <= endPage; i++) { %>
+              <% if (i === pagination.currentPage) { %>
+                <span class="pagination__number pagination__number--active"><%= i %></span>
+              <% } else { %>
+                <a href="?page=<%= i %>" class="pagination__number"><%= i %></a>
+              <% } %>
+            <% } %>
+            
+            <!-- Dernière page si pas visible -->
+            <% if (endPage < pagination.totalPages) { %>
+              <% if (endPage < pagination.totalPages - 1) { %>
+                <span class="pagination__dots">...</span>
+              <% } %>
+              <a href="?page=<%= pagination.totalPages %>" class="pagination__number"><%= pagination.totalPages %></a>
+            <% } %>
+          </div>
+
+          <!-- Bouton Suivant -->
+          <% if (pagination.hasNextPage) { %>
+            <a href="?page=<%= pagination.nextPage %>" class="pagination__btn pagination__btn--next">
+              Suivant
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          <% } else { %>
+            <span class="pagination__btn pagination__btn--next pagination__btn--disabled">
+              Suivant
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          <% } %>
+        </div>
+        <% } %>
+                <!-- Informations de pagination -->
+        <div class="pagination-info">
+          <p>Affichage de <%= pagination.startIndex %> à <%= pagination.endIndex %> sur <%= pagination.totalRestaurants %> restaurants</p>
+        </div>
       </section>
     </main>
 
+    <!-- Modal pour ajouter un restaurant -->
+    <div id="restaurantModal" class="modal">
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2>Ajouter un nouveau restaurant</h2>
+          <span class="modal__close">&times;</span>
+        </div>
+        <form id="restaurantForm" class="modal__form">
+          <div class="form__group">
+            <label for="name">Nom du restaurant *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form__group">
+            <label for="description">Description *</label>
+            <textarea id="description" name="description" rows="3" required></textarea>
+          </div>
+          
+          <div class="form__row">
+            <div class="form__group">
+              <label for="address">Adresse *</label>
+              <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form__group">
+              <label for="city">Ville *</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+          </div>
+          
+          <div class="form__row">
+            <div class="form__group">
+              <label for="style">Style de cuisine *</label>
+              <select id="style" name="style" required>
+                <option value="">Choisissez un style</option>
+                <option value="Français">Français</option>
+                <option value="Italien">Italien</option>
+                <option value="Japonais">Japonais</option>
+                <option value="Mexicain">Mexicain</option>
+                <option value="Indien">Indien</option>
+                <option value="Grec">Grec</option>
+                <option value="Thaïlandais">Thaïlandais</option>
+                <option value="Libanais">Libanais</option>
+                <option value="Brésilien">Brésilien</option>
+                <option value="Marocain">Marocain</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="Turc">Turc</option>
+                <option value="Allemand">Allemand</option>
+                <option value="Russe">Russe</option>
+                <option value="Argentin">Argentin</option>
+                <option value="Américain">Américain</option>
+                <option value="Scandinave">Scandinave</option>
+                <option value="Coréen">Coréen</option>
+                <option value="Fusion">Fusion</option>
+                <option value="Végan">Végan</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label for="image">Image (nom du fichier) *</label>
+              <input type="text" id="image" name="image" required placeholder="ex: restaurant.jpg">
+            </div>
+          </div>
+          
+          <div class="form__actions">
+            <button type="button" class="btn btn--secondary" id="cancelBtn">Annuler</button>
+            <button type="submit" class="btn btn--primary">Créer le restaurant</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <%- include('../partials/footer') %>
+
+    <script>
+      // Code de la modal uniquement (supprime le code de pagination JS)
+      document.addEventListener('DOMContentLoaded', function() {
+        // Gestion de la modal
+        const modal = document.getElementById('restaurantModal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.querySelector('.modal__close');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const form = document.getElementById('restaurantForm');
+
+        if (!modal || !openModalBtn) {
+          console.error('Éléments de la modal non trouvés');
+          return;
+        }
+
+        openModalBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        });
+
+        function closeModal() {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          if (form) form.reset();
+        }
+
+        if (closeModalBtn) {
+          closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', closeModal);
+        }
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        if (form) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            try {
+              const response = await fetch('/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+              });
+              
+              const result = await response.json();
+              
+              if (result.success) {
+                alert('Restaurant créé avec succès !');
+                closeModal();
+                window.location.href = '/'; // Retour à la page 1
+              } else {
+                alert('Erreur : ' + result.message);
+              }
+            } catch (error) {
+              console.error('Erreur:', error);
+              alert('Erreur lors de la création du restaurant');
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
