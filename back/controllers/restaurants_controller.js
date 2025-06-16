@@ -9,7 +9,7 @@ export const restaurantController = {
 
   async getAllRestaurants(req, res) {
     const restaurants = await Restaurant.findAll();
-    res.status(200).json(restaurants);
+    res.status(200).render('../views/pages/home', { restaurants }); 
   },
 
   
@@ -19,8 +19,6 @@ export const restaurantController = {
 
     res.json(restaurant);
   },
-
-
 
   async createRestaurant(req, res) {
 
@@ -49,7 +47,6 @@ export const restaurantController = {
 
     res.json(restaurant);
   },
-
 
 
   async deleteRestaurant(req,res){

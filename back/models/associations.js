@@ -1,12 +1,10 @@
 // Import des modèles
-
 import { Starter } from './starter_models.js';
 import { Main } from './main_models.js';
 import { Dessert } from './dessert_models.js';
 import { Restaurant } from './restaurants_models.js';
 
-
-// Associations pour les plats (Starter, Main, Dessert) et les restaurants
+// Un restaurant peut avoir plusieurs starters, mains et desserts
 Restaurant.hasMany(Starter, {
   foreignKey: 'restaurant_id',
   onDelete: 'CASCADE',
@@ -30,7 +28,6 @@ Restaurant.hasMany(Dessert, {
 Dessert.belongsTo(Restaurant, {
   foreignKey: 'restaurant_id',
 });
-
 
 // Exportation des modèles avec associations
 export { Restaurant, Starter, Main, Dessert };

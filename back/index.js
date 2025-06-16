@@ -12,13 +12,9 @@ app.use(cors({
   origin: "*"
 }));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-  message: "Trop de requetes, veuillez reesayer plus tard !"
-});
 
-app.use(limiter);
+
+
 
 
 app.use(express.static("./public"));  // Utiliser le dossier "public" pour les fichiers statiques (images, CSS, etc.)
@@ -29,6 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(bodySanitizer);
+
+app.set('view engine', 'ejs');
+app.set('views', './views'); // Assure-toi que le dossier 'views' existe à la racine de ton projet
 
 app.use(router);
 // Lancer le serveur

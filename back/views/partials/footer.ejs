@@ -1,19 +1,28 @@
 <footer class="footer">
-    <h3>ohmyfood</h3>
-    <ul class="footer__list__container">            
-        <li class="footer__list__txt">
-            <i class="fas fa-utensils"></i>
-            <p>Poposer un restaurant</p>
-        </li>
-        <li class="footer__list__txt">
-            <i class="fas fa-hands-helping"></i>
-            <p>Devenir partenaire</p>
-        </li>
-        <li class="footer__list__txt">Mentions legales</li>
-        <li class="footer__list__txt">
-            <a  href="mailto:contact@ohmyfood.com" >Contact</a>
-        </li>
-    </ul>
+  <div class="footer__brand">
+    <i class="fas fa-hamburger"></i>
+    <h3>OhMyFood</h3>
+  </div>
+  <ul class="footer__list__container">
+    <li class="footer__list__txt">
+      <i class="fas fa-utensils"></i>
+      <a href="/restaurants">Proposer un restaurant</a>
+    </li>
+    <li class="footer__list__txt">
+      <i class="fas fa-hands-helping"></i>
+      <a href="/partenaires">Devenir partenaire</a>
+    </li>
+    <li class="footer__list__txt">
+      <a href="/mentions-legales">Mentions légales</a>
+    </li>
+    <li class="footer__list__txt">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:contact@ohmyfood.com">Contact</a>
+    </li>
+  </ul>
+  <div class="footer__copyright">
+    &copy; <%= new Date().getFullYear() %> OhMyFood - Tous droits réservés
+  </div>
+  <script src="/js/main.js" type="module"></script>
+  <script src="../../data/data-mapper.js" type="module"></script>
 </footer>
-<script src="/js/main.js" type="module"></script>
-<script src="../../data/data-mapper.js" type="module"></script>

@@ -1,32 +1,64 @@
-import { mainController } from "./main_controller.js";
-import { starterController } from "./starter_controller.js";
-import { dessertController } from './dessert_controller.js';
+import { Restaurant } from '../models/associations.js';
+import { restaurantCreateSchema,restaurantUpdateSchema } from '../schema/restaurant.schema.js';
 
-export const getMenuController = {
-  async getMenu(req, res) {
-    try {
-    // Récupérer les starters
-      const starters = await starterController.getAllStarters(req, res);
 
-      // Récupérer les desserts
-      const desserts = await dessertController.getAllDesserts(req, res);
 
-      const main = await mainController.getAllMain(req, res);
 
-      // Regrouper les résultats dans un objet
-      const menu = {
-        starters,
-        desserts,
-        main,
-      };
-      console.log(menu);
-      
-      // Envoyer une seule réponse
-      res.status(200).json(menu);
-    } catch (error) {
-      console.error("Erreur dans getMenu:", error);
-      res.status(500).json({ error: "Erreur lors de la récupération du menu." });
-    }
+export const restaurantController = {
+
+
+  async getAllRestaurants(req, res) {
+    const restaurants = await Restaurant.findAll();
+    res.status(200).render('../views/pages/home', { restaurants }); 
   },
-};
+
   
+  async getOneRestaurant(req, res){
+    const { id } = req.params;
+    const restaurant = await Restaurant.findByPk(id);
+
+    res.json(restaurant);
+  },
+
+  async createRestaurant(req, res) {
+
+    const inputData = req.body;
+
+    await restaurantCreateSchema.validateAsync(inputData);
+
+    // Création du restaurant
+    const user = await Restaurant.create(inputData);
+
+    // Envoi de la réponse
+    res.status(201).json({ user });
+    
+  },
+
+
+  async updateRestaurant(req,res){
+ 
+    const { id } = req.params;
+    const inputData = req.body;
+    const restaurant = await Restaurant.findByPk(id);
+    
+    await restaurantUpdateSchema.validateAsync(inputData);
+
+    await restaurant.update(inputData);
+
+    res.json(restaurant);
+  },
+
+
+  async deleteRestaurant(req,res){
+
+    const { id } = req.params;
+    const restaurant = await Restaurant.findByPk(id);
+    if(!restaurant){
+      return res.status(404).json({error: 'le restaurant na pas été rouvé'});
+    }
+
+    await restaurant.destroy();
+    res.status(204).json();
+
+  }
+};

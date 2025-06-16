@@ -1,5 +1,5 @@
 // models/dessert.js
-import { DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from './sequelize_client.js'; // Assure-toi d'avoir une instance de sequelize client
 
 export class Restaurant extends Model {}
@@ -7,26 +7,37 @@ export class Restaurant extends Model {}
 Restaurant.init(
   {
     name: {
-      type: DataTypes.STRING(50), // Type de la colonne name
-      allowNull: false,           // Cette colonne ne peut pas être nulle
-    },
-    city: {
-      type: DataTypes.STRING(50),       // Type de la colonne description
-      allowNull: false,           // Cette colonne ne peut pas être nulle
+      type: DataTypes.STRING(100),
+      allowNull: false,
     },
     image: {
-      type: DataTypes.STRING(200),    // Type de la colonne price
-      allowNull: false,           // Cette colonne ne peut pas être nulle
-      unique: true 
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING(300),
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    style: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
     }
   },
   {
-    sequelize,  // La connexion Sequelize
-    tableName: "restaurant",  // Nom exact de la table en BDD
-
+    sequelize,
+    tableName: "restaurant",
   }
-  
 );
+
+export default Restaurant;
 
 
 

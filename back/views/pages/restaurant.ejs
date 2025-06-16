@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main>
+      <!-- Hero section du restaurant -->
+      <section class="restaurant-hero">
+        <img src="/images/<%= restaurant.image %>" alt="<%= restaurant.name %>" class="restaurant-hero__image">
+        <div class="restaurant-hero__content">
+          <div class="restaurant-hero__info">
+            <h1 class="restaurant-hero__title"><%= restaurant.name %></h1>
+            <p class="restaurant-hero__description"><%= restaurant.description %></p>
+            <div class="restaurant-hero__details">
+              <span class="restaurant-hero__address">
+                <i class="fas fa-map-marker-alt"></i>
+                <%= restaurant.address %>, <%= restaurant.city %>
+              </span>
+              <span class="restaurant-hero__style">
+                <i class="fas fa-tag"></i>
+                <%= restaurant.style %>
+              </span>
+            </div>
+          </div>
+          <div class="restaurant-hero__heart">
+            <i class="far fa-heart"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu sections -->
+      <div class="menu-container">
+        <!-- Entrées -->
+        <section class="menu-section">
+          <h2 class="menu-section__title">
+            <span class="menu-section__icon"><i class="fas fa-leaf"></i></span>
+            Entrées
+          </h2>
+          <div class="menu-cards">
+            <% starters.forEach(starter => { %>
+              <div class="menu-card">
+                <div class="menu-card__content">
+                  <h3 class="menu-card__title"><%= starter.title %></h3>
+                  <p class="menu-card__description"><%= starter.description %></p>
+                </div>
+                <div class="menu-card__price"><%= starter.price %>€</div>
+                <div class="menu-card__check">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </section>
+
+        <!-- Plats principaux -->
+        <section class="menu-section">
+          <h2 class="menu-section__title">
+            <span class="menu-section__icon"><i class="fas fa-utensils"></i></span>
+            Plats
+          </h2>
+          <div class="menu-cards">
+            <% mains.forEach(main => { %>
+              <div class="menu-card">
+                <div class="menu-card__content">
+                  <h3 class="menu-card__title"><%= main.title %></h3>
+                  <p class="menu-card__description"><%= main.description %></p>
+                </div>
+                <div class="menu-card__price"><%= main.price %>€</div>
+                <div class="menu-card__check">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </section>
+
+        <!-- Desserts -->
+        <section class="menu-section">
+          <h2 class="menu-section__title">
+            <span class="menu-section__icon"><i class="fas fa-ice-cream"></i></span>
+            Desserts
+          </h2>
+          <div class="menu-cards">
+            <% desserts.forEach(dessert => { %>
+              <div class="menu-card">
+                <div class="menu-card__content">
+                  <h3 class="menu-card__title"><%= dessert.title %></h3>
+                  <p class="menu-card__description"><%= dessert.description %></p>
+                </div>
+                <div class="menu-card__price"><%= dessert.price %>€</div>
+                <div class="menu-card__check">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </section>
+
+        <!-- Bouton de commande -->
+        <div class="order-section">
+          <button class="order-btn">Commander</button>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
