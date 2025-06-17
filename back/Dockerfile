@@ -3,14 +3,14 @@ FROM node:18-alpine
 # Dossier de travail
 WORKDIR /app
 
-# Installation de pnpm
-RUN npm install -g pnpm
+# Installation de nmp
+RUN npm install -g nmp
 
 # Copie des fichiers nécessaires
 COPY package*.json ./
 
 # Installation des dépendances
-RUN pnpm install
+RUN nmp install
 
 # Copie du reste du code
 COPY . .
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 3000
 
 # Commande de démarrage
-CMD ["pnpm", "start"]
+CMD ["nmp", "start"]
