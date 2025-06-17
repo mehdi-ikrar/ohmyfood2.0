@@ -1,16 +1,16 @@
-FROM node:18-alpine
+FROM node:18
 
 # Dossier de travail
 WORKDIR /app
 
-# Installation de nmp
-RUN npm install -g nmp
+# Installation de npm
+RUN npm install -g npm
 
 # Copie des fichiers nécessaires
 COPY package*.json ./
 
 # Installation des dépendances
-RUN nmp install
+RUN npm install
 
 # Copie du reste du code
 COPY . .
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 3000
 
 # Commande de démarrage
-CMD ["nmp", "start"]
+CMD ["npm", "start"]
