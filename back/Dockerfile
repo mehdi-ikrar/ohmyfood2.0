@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-WORKDIR /app
+WORKDIR /back
 
 COPY package*.json ./
 RUN pnpm install
