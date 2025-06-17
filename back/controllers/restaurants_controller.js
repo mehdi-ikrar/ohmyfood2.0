@@ -42,8 +42,9 @@ export const restaurantController = {
       
     } catch (error) {
       console.error('Erreur lors de la récupération des restaurants:', error);
-      res.status(500).render('pages/error', { 
-        message: 'Erreur lors du chargement des restaurants' 
+      res.status(500).json({ 
+        error: 'Erreur lors du chargement des restaurants',
+        message: error.message 
       });
     }
   },
