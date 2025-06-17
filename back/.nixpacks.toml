@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["nodejs_18", "pnpm"]
+nixPkgs = ["nodejs_18", "nmp"]
 
 [phases.build]
-cmds = ["pnpm install"]
+cmds = ["nmp install"]
 
 [start]
-cmd = "pnpm start"
+cmd = "nmp start"
