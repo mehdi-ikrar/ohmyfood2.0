@@ -1,21 +1,21 @@
 FROM node:18-alpine
 
-# Crée le dossier de travail
+# Dossier de travail
 WORKDIR /app
 
-# Installe pnpm en global
+# Installation de pnpm
 RUN npm install -g pnpm
 
-# Copie les fichiers package.json et lock
+# Copie des fichiers nécessaires
 COPY package*.json ./
 
-# Installe les dépendances avec pnpm
+# Installation des dépendances
 RUN pnpm install
 
-# Copie le reste du code
+# Copie du reste du code
 COPY . .
 
-# Expose le port utilisé par ton app
+# Expose le port de l'apps
 EXPOSE 3000
 
 # Commande de démarrage
