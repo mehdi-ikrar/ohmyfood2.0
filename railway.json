@@ -1,11 +1,11 @@
 {
   "build": {
     "builder": "nixpacks",
-    "buildCommand": "pnpm install",
+    "buildCommand": "nmp install",
     "rootDirectory": "back"
   },
   "deploy": {
-    "startCommand": "pnpm start",
+    "startCommand": "nmp start",
     "rootDirectory": "back"
   }
 }
