@@ -1,5 +1,5 @@
 node_modules
-npm-debug.log
+pnpm-debug.log
 pnpm-lock.yaml
 .DS_Store
 .env
