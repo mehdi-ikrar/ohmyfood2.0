@@ -3,14 +3,14 @@ FROM node:18
 # Dossier de travail
 WORKDIR /app
 
-# Installation de npm
-RUN npm install -g npm
+# Installation de pnpm 
+RUN pnpm  install -g pnpm 
 
 # Copie des fichiers nécessaires
 COPY package*.json ./
 
 # Installation des dépendances
-RUN npm install
+RUN pnpm  install
 
 # Copie du reste du code
 COPY . .
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 3000
 
 # Commande de démarrage
-CMD ["npm", "start"]
+CMD ["pnpm ", "start"]
