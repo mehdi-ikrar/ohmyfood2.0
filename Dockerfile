@@ -1,22 +1,21 @@
+# Utilise une image Node.js 18
 FROM node:18
 
-# Dossier de travail
+# Crée un dossier pour l'application dans le conteneur
 WORKDIR /app
 
-# Installation de npm
-RUN npm install -g npm
+# Copie tous les fichiers du projet dans le conteneur
+COPY . .
 
-# Copie des fichiers nécessaires
-COPY back/package*.json ./
+# Déplace le dossier de travail dans le sous-dossier 'src'
+# où se trouvent les fichiers package.json et index.js
+WORKDIR /app/back
 
-# Installation des dépendances
+# Donne les permissions d'exécution au script
+RUN chmod +x ../entrypoint.sh
+
+# Installe les dépendances
 RUN npm install
 
-# Copie du reste du code
-COPY back/ .
-
-# Expose le port de l'apps
-EXPOSE 3000
-
-# Commande de démarrage
-CMD ["npm", "start"]
+# Indique à Docker d'exécuter le script d'entrée au démarrage du conteneur
+CMD [ "../entrypoint.sh" ]
