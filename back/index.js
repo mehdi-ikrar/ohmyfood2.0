@@ -33,5 +33,5 @@ app.use(router);
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 oCoffee app started at http://localhost:${PORT}`);
+  console.log(`🚀 oCoffsee app started at http://localhost:${PORT}`);
 });
