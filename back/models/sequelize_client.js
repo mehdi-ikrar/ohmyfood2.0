@@ -1,29 +1,25 @@
 import "dotenv/config";
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
-  {
-    dialect: "postgres",
-    host: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
-    define: {
-      timestamps: true
-    }
-  }
-);
+// On récupère l'URL (qui sera celle de Neon sur Render, ou localhost sur votre PC)
+const databaseUrl = process.env.PG_URL;
 
+if (!databaseUrl) {
+  console.error("❌ Erreur : La variable PG_URL est introuvable !");
+  process.exit(1);
+}
 
-/*
-import "dotenv/config";
-import { Sequelize } from "sequelize";
-
-
-export const sequelize = new Sequelize(process.env.PG_URL, {
+export const sequelize = new Sequelize(databaseUrl, {
   dialect: "postgres",
+  logging: false,
+  dialectOptions: {
+    // Cette option est indispensable pour que Neon accepte la connexion sécurisée en ligne
+    ssl: databaseUrl.includes("localhost") ? false : {
+      require: true,
+      rejectUnauthorized: false
+    }
+  },
   define: {
-    timestamps: false
+    timestamps: true
   }
-});*/
-
+});
