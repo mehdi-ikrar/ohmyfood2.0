@@ -694,6 +694,51 @@ body a:link {
   padding: 0 2rem;
 }
 
+/* Forcer les sections menu en colonne sur téléphone */
+@media (max-width: 768px) {
+  .menu-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+  }
+  .menu-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+    padding: 0;
+  }
+  /* Retirer toute marge/padding gauche des menu-section en mobile */
+  .menu-section {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  /* Afficher le prix sous le titre dans les cartes (mobile) */
+  .menu-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+    /* cacher la grande ombre/hover trop lourde sur mobile */
+  }
+  .menu-card .menu-card__content {
+    width: 100%;
+    margin-bottom: 0.4rem;
+  }
+  .menu-card .menu-card__price {
+    width: 100%;
+    text-align: left;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .menu-card:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(156, 89, 220, 0.06);
+  }
+  /* Masquer les descriptions des plats en mode mobile */
+  .menu-card__description {
+    display: none !important;
+  }
+}
 .menu-section {
   margin: 0rem 2rem 2rem 3rem;
 }
