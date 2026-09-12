@@ -19,7 +19,7 @@ export const restaurants = [
   },
   {
     id: 3,
-    name: "Saveurs d'Orient",
+    name: "Saveurs d'Orientale",
     image: "Saveurs_dorient.jpg",
     description: "Voyage culinaire au Moyen-Orient avec des plats traditionnels et épicés.",
     address: "25 avenue Habib Bourguiba",
