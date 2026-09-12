@@ -2,7 +2,7 @@ export const restaurants = [
   {
     id: 1,
     name: "Le Gourmet Parisien",
-    image: "a_la_francaise.jpg",
+    image: "a_la_francaise.webp",
     description: "Cuisine française raffinée dans un cadre élégant au cœur de Paris.",
     address: "12 rue de Rivoli",
     city: "Paris",
@@ -11,7 +11,7 @@ export const restaurants = [
   {
     id: 2,
     name: "Trattoria Bella Vita",
-    image: "la_note_enchantee.jpg",
+    image: "la_note_enchantee.webp",
     description: "Ambiance chaleureuse et spécialités italiennes authentiques.",
     address: "8 Via Roma",
     city: "Lyon",
@@ -20,7 +20,7 @@ export const restaurants = [
   {
     id: 3,
     name: "Saveurs d'Orientale",
-    image: "Saveurs_dorient.jpg",
+    image: "Saveurs_dorient.webp",
     description: "Voyage culinaire au Moyen-Orient avec des plats traditionnels et épicés.",
     address: "25 avenue Habib Bourguiba",
     city: "Lille",
@@ -29,7 +29,7 @@ export const restaurants = [
   {
     id: 4,
     name: "Fusion Moderne",
-    image: "Le_delice_des_sens.jpg",
+    image: "Le_delice_des_sens.webp",
     description: "Cuisine créative et moderne, inspirations du monde entier.",
     address: "42 King's Road",
     city: "Marseille",
@@ -38,7 +38,7 @@ export const restaurants = [
   {
     id: 5,
     name: "Tokyo Sushi Bar",
-    image: "a_la_francaise.jpg",
+    image: "Tokyo_Sushi_Bar.webp",
     description: "Sushi authentique et cuisine japonaise traditionnelle.",
     address: "15 rue du Japon",
     city: "Paris",
@@ -47,7 +47,7 @@ export const restaurants = [
   {
     id: 6,
     name: "El Corazón",
-    image: "a_la_francaise.jpg",
+    image: "El_Corazón.webp",
     description: "Tapas espagnoles et paella dans une ambiance festive.",
     address: "33 Calle Mayor",
     city: "Toulouse",
@@ -56,7 +56,7 @@ export const restaurants = [
   {
     id: 7,
     name: "Bollywood Spice",
-    image: "a_la_francaise.jpg",
+    image: "Bollywood_Spice.webp",
     description: "Cuisine indienne épicée et parfumée avec des recettes ancestrales.",
     address: "7 rue des Épices",
     city: "Lyon",
@@ -65,7 +65,7 @@ export const restaurants = [
   {
     id: 8,
     name: "La Brasserie du Port",
-    image: "a_la_francaise.jpg",
+    image: "La_Brasserie_du_Port.webp",
     description: "Fruits de mer frais et spécialités bretonnes face à l'océan.",
     address: "12 quai des Marins",
     city: "Brest",
@@ -74,7 +74,7 @@ export const restaurants = [
   {
     id: 9,
     name: "Green Garden",
-    image: "a_la_francaise.jpg",
+    image: "Green_Garden.webp",
     description: "Restaurant 100% végétarien avec des produits bio et locaux.",
     address: "28 avenue Verte",
     city: "Nantes",
@@ -83,7 +83,7 @@ export const restaurants = [
   {
     id: 10,
     name: "Steakhouse Premium",
-    image: "a_la_francaise.jpg",
+    image: "Steakhouse_Premium.webp",
     description: "Viandes d'exception grillées au feu de bois.",
     address: "45 rue des Bouchers",
     city: "Bordeaux",
@@ -92,7 +92,7 @@ export const restaurants = [
   {
     id: 11,
     name: "Thaï Paradise",
-    image: "a_la_francaise.jpg",
+    image: "Thaï_Paradise.webp",
     description: "Saveurs thaïlandaises authentiques dans un décor exotique.",
     address: "19 rue de Bangkok",
     city: "Nice",
@@ -101,7 +101,7 @@ export const restaurants = [
   {
     id: 12,
     name: "Chez Mamie",
-    image: "a_la_francaise.jpg",
+    image: "Chez_Mamie.webp",
     description: "Cuisine familiale traditionnelle comme à la maison.",
     address: "56 rue de la Nostalgie",
     city: "Dijon",
@@ -110,7 +110,7 @@ export const restaurants = [
   {
     id: 13,
     name: "Dragon d'Or",
-    image: "a_la_francaise.jpg",
+    image: "Dragon_dOr.webp",
     description: "Cuisine chinoise raffinée et dim sum authentiques.",
     address: "88 rue de Pékin",
     city: "Paris",
@@ -119,7 +119,7 @@ export const restaurants = [
   {
     id: 14,
     name: "La Pizzeria Napoli",
-    image: "a_la_francaise.jpg",
+    image: "La_Pizzeria_Napoli.webp",
     description: "Pizzas au feu de bois selon la tradition napolitaine.",
     address: "22 via Napoli",
     city: "Strasbourg",
@@ -128,7 +128,7 @@ export const restaurants = [
   {
     id: 15,
     name: "Le Petit Bistrot",
-    image: "a_la_francaise.jpg",
+    image: "Le_Petit_Bistrot.webp",
     description: "Ambiance parisienne et plats bistrot dans un cadre authentique.",
     address: "14 rue Montmartre",
     city: "Paris",
@@ -137,7 +137,7 @@ export const restaurants = [
   {
     id: 16,
     name: "Copacabana",
-    image: "a_la_francaise.jpg",
+    image: "Copacabana.webp",
     description: "Cuisine brésilienne festive avec churrasco et caïpirinhas.",
     address: "31 avenue Rio",
     city: "Montpellier",
@@ -146,7 +146,7 @@ export const restaurants = [
   {
     id: 17,
     name: "Istanbul Kebab House",
-    image: "a_la_francaise.jpg",
+    image: "Istanbul_Kebab_House.webp",
     description: "Spécialités turques et grillades orientales authentiques.",
     address: "17 rue d'Istanbul",
     city: "Rennes",
@@ -155,7 +155,7 @@ export const restaurants = [
   {
     id: 18,
     name: "L'Atelier Desserts",
-    image: "a_la_francaise.jpg",
+    image: "LAtelier_Desserts,.webp",
     description: "Pâtisserie fine et desserts créatifs par un chef étoilé.",
     address: "9 rue Sucrée",
     city: "Lyon",
@@ -164,7 +164,7 @@ export const restaurants = [
   {
     id: 19,
     name: "Ocean Blue",
-    image: "a_la_francaise.jpg",
+    image: "Ocean_Blue.webp",
     description: "Restaurant gastronomique face à la mer, cuisine moderne.",
     address: "1 promenade des Flots",
     city: "Cannes",
@@ -173,7 +173,7 @@ export const restaurants = [
   {
     id: 20,
     name: "Le Coin Street Food",
-    image: "a_la_francaise.jpg",
+    image: "Le_Coin_Street_Food.webp",
     description: "Food truck gourmet avec des burgers et tacos revisités.",
     address: "Place du Marché",
     city: "Rouen",

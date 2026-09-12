@@ -98,6 +98,9 @@
     margin-bottom: 2rem;
     font-weight: 300;
   }
+  &__cta {
+    @include btn;
+  }
 }
 
 .section__restaurant {
