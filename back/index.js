@@ -7,7 +7,11 @@ import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 
 const app = express();  // Initialiser Express
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(cors({
   origin: "*"
 }));

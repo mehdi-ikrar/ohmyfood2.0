@@ -100,6 +100,8 @@
   }
   &__cta {
     @include btn;
+    padding: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -109,10 +111,11 @@
     background: linear-gradient(120deg, #e871da 0%, #99e2d0 100%);
     width: 40%;
     margin: 0 auto;
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     border-radius: 2rem 2rem 2rem 2rem;
     color: #fff;
     font-family: 'Shrikhand', cursive;
+    font-size: 2rem;
     
     // Largeur 100% sur mobile
     @media (max-width: 768px) {
@@ -194,7 +197,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem 2rem;
+
   background: #fff;
   box-shadow: 0 2px 8px rgba(156, 89, 220, 0.08);
 
@@ -202,14 +205,13 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-bottom: 1rem;
     .header__logo {
       height: 40px;
-      margin-right: 1rem;
+      margin-right: rem;
     }
     .header__brand {
       font-family: 'Shrikhand', cursive;
-      font-size: 2rem;
+      font-size: 5rem;
       color: #9c59dc;
       letter-spacing: 2px;
     }
@@ -217,6 +219,8 @@
   .header__nav {
     display: flex;
     gap: 1.5rem;
+    margin-bottom: 1rem;
+    
     .header__nav__link {
       color: #9c59dc;
       font-weight: 500;
@@ -290,9 +294,9 @@
   background: #fff;
   border-radius: 1.5rem;
   box-shadow: 0 2px 16px rgba(156, 89, 220, 0.08);
-  padding: 2.5rem 3rem 2rem 3rem;
+  padding: 2rem 2rem 2rem 2rem;
   margin: 0rem auto 0rem auto;
-  max-width: 900px;
+  margin-bottom: 2rem;
   text-align: center;
 
   &__title {
@@ -335,6 +339,7 @@
     box-shadow: 0 2px 8px rgba(153, 226, 208, 0.10);
     transition: transform 0.2s;
     position: relative;
+    font-size: 1.5rem;
     
     &:hover {
       transform: translateY(-6px) scale(1.04);
@@ -367,7 +372,7 @@
     }
     
     &__text {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 500;
       text-align: center;
       line-height: 1.3;
@@ -835,7 +840,7 @@
 }
 
 .modal__content {
-  background: #fff;
+  background: $pink-btn;
   border-radius: 1.5rem;
   width: 90%;
   max-width: 600px;
@@ -843,6 +848,13 @@
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(156, 89, 220, 0.20);
   animation: modalSlideIn 0.3s ease-out;
+  margin: 2rem auto;
+  #restaurantForm{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+
+  }
 }
 
 .modal__header {
@@ -854,7 +866,7 @@
   
   h2 {
     font-family: 'Shrikhand', cursive;
-    color: #9c59dc;
+    color: $secondary;
     margin: 0;
     font-size: 1.8rem;
   }
@@ -1096,32 +1108,4 @@
   }
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
 
-.modal__content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
