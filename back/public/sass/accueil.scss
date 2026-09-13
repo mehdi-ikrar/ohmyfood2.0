@@ -124,7 +124,7 @@
     }
   }
 }
-.restaurant__card_container {
+#restaurant__card_container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -163,12 +163,17 @@
     align-items: center;
     background: linear-gradient(120deg, #e871da 0%, #99e2d0 100%);
   }
-  h3 {
-    font-size: 1.3rem;
-    margin: 0;
-    font-family: 'Shrikhand', cursive;
-    color: #99e2d0;
-  }
+    h3 {
+  font-size: 1.3rem;
+  margin: 0;
+  text-align: center;
+  font-family: 'Shrikhand', cursive;
+  color: #99e2d0; 
+ 
+
+
+
+}
   p {
     margin: 0.2rem 0 0 0;
     color: #99e2d0;
@@ -182,15 +187,7 @@
     font-size: 0.9rem;
     margin-right: 0.5rem;
   }
-  .fa-heart {
-    color: #e871da;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: color 0.2s;
-    &:hover {
-      color: #9c59dc;
-    }
-  }
+
 }
 
 .header__menu {
@@ -243,13 +240,14 @@
   padding: 2rem 1rem 1rem 1rem;
   border-radius: 2rem 2rem 0 0;
   margin-top: 3rem;
-  .footer__brand {
+    .footer__brand {
     display: flex;
+    justify-content: center; /* <-- C'est cette ligne qui centre le bloc horizontalement */
     align-items: center;
     gap: 0.7rem;
     h3 {
       font-family: 'Shrikhand', cursive;
-      font-size: 1.7rem;
+      font-size: 3rem;
       margin: 0;
     }
     i {
@@ -408,7 +406,6 @@
     border-radius: 2rem 2rem 0 0;
     margin-top: -2rem;
     position: relative;
-    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -422,7 +419,7 @@
   &__title {
     font-family: 'Shrikhand', cursive;
     font-size: 2.5rem;
-    color: #9c59dc;
+    color: white;
     margin: 0 0 1rem 0;
   }
 
@@ -452,23 +449,20 @@
     }
   }
 
-  &__heart {
-    font-size: 2rem;
-    color: #e871da;
-    cursor: pointer;
-    transition: color 0.2s;
-    
-    &:hover {
-      color: #9c59dc;
-    }
-  }
+
 }
 
 // Restaurant Hero Info Section uniquement
 .restaurant-hero__info {
   flex: 1;
-  max-width: 70%;
+  max-width: 100%; // Prendre toute la largeur
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   animation: fadeInUp 0.6s ease-out;
+  background: $pink-btn;
 }
 
 .restaurant-hero__title {
@@ -523,6 +517,8 @@
   gap: 2.5rem;
   flex-wrap: wrap;
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  
 
   > * {
     animation: fadeInUp 0.8s ease-out;
@@ -564,19 +560,13 @@
 .restaurant-hero__address {
   animation-delay: 0.2s;
   
-  &::before {
-    content: '📍';
-    margin-right: 0.3rem;
-  }
+
 }
 
 .restaurant-hero__style {
   animation-delay: 0.4s;
   
-  &::before {
-    content: '🏷️';
-    margin-right: 0.3rem;
-  }
+
 }
 
 // Animation pour cette section
