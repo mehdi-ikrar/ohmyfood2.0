@@ -98,6 +98,11 @@
     margin-bottom: 2rem;
     font-weight: 300;
   }
+  &__cta {
+    @include btn;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
 }
 
 .section__restaurant {
@@ -106,10 +111,11 @@
     background: linear-gradient(120deg, #e871da 0%, #99e2d0 100%);
     width: 40%;
     margin: 0 auto;
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     border-radius: 2rem 2rem 2rem 2rem;
     color: #fff;
     font-family: 'Shrikhand', cursive;
+    font-size: 2rem;
     
     // Largeur 100% sur mobile
     @media (max-width: 768px) {
@@ -118,7 +124,7 @@
     }
   }
 }
-.restaurant__card_container {
+#restaurant__card_container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -157,12 +163,17 @@
     align-items: center;
     background: linear-gradient(120deg, #e871da 0%, #99e2d0 100%);
   }
-  h3 {
-    font-size: 1.3rem;
-    margin: 0;
-    font-family: 'Shrikhand', cursive;
-    color: #99e2d0;
-  }
+    h3 {
+  font-size: 1.3rem;
+  margin: 0;
+  text-align: center;
+  font-family: 'Shrikhand', cursive;
+  color: #99e2d0; 
+ 
+
+
+
+}
   p {
     margin: 0.2rem 0 0 0;
     color: #99e2d0;
@@ -176,22 +187,14 @@
     font-size: 0.9rem;
     margin-right: 0.5rem;
   }
-  .fa-heart {
-    color: #e871da;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: color 0.2s;
-    &:hover {
-      color: #9c59dc;
-    }
-  }
+
 }
 
 .header__menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem 2rem;
+
   background: #fff;
   box-shadow: 0 2px 8px rgba(156, 89, 220, 0.08);
 
@@ -199,14 +202,13 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-bottom: 1rem;
     .header__logo {
       height: 40px;
-      margin-right: 1rem;
+      margin-right: rem;
     }
     .header__brand {
       font-family: 'Shrikhand', cursive;
-      font-size: 2rem;
+      font-size: 5rem;
       color: #9c59dc;
       letter-spacing: 2px;
     }
@@ -214,6 +216,8 @@
   .header__nav {
     display: flex;
     gap: 1.5rem;
+    margin-bottom: 1rem;
+    
     .header__nav__link {
       color: #9c59dc;
       font-weight: 500;
@@ -236,13 +240,14 @@
   padding: 2rem 1rem 1rem 1rem;
   border-radius: 2rem 2rem 0 0;
   margin-top: 3rem;
-  .footer__brand {
+    .footer__brand {
     display: flex;
+    justify-content: center; /* <-- C'est cette ligne qui centre le bloc horizontalement */
     align-items: center;
     gap: 0.7rem;
     h3 {
       font-family: 'Shrikhand', cursive;
-      font-size: 1.7rem;
+      font-size: 3rem;
       margin: 0;
     }
     i {
@@ -287,9 +292,9 @@
   background: #fff;
   border-radius: 1.5rem;
   box-shadow: 0 2px 16px rgba(156, 89, 220, 0.08);
-  padding: 2.5rem 3rem 2rem 3rem;
+  padding: 2rem 2rem 2rem 2rem;
   margin: 0rem auto 0rem auto;
-  max-width: 900px;
+  margin-bottom: 2rem;
   text-align: center;
 
   &__title {
@@ -332,6 +337,7 @@
     box-shadow: 0 2px 8px rgba(153, 226, 208, 0.10);
     transition: transform 0.2s;
     position: relative;
+    font-size: 1.5rem;
     
     &:hover {
       transform: translateY(-6px) scale(1.04);
@@ -364,7 +370,7 @@
     }
     
     &__text {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 500;
       text-align: center;
       line-height: 1.3;
@@ -400,7 +406,6 @@
     border-radius: 2rem 2rem 0 0;
     margin-top: -2rem;
     position: relative;
-    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -414,7 +419,7 @@
   &__title {
     font-family: 'Shrikhand', cursive;
     font-size: 2.5rem;
-    color: #9c59dc;
+    color: white;
     margin: 0 0 1rem 0;
   }
 
@@ -444,29 +449,26 @@
     }
   }
 
-  &__heart {
-    font-size: 2rem;
-    color: #e871da;
-    cursor: pointer;
-    transition: color 0.2s;
-    
-    &:hover {
-      color: #9c59dc;
-    }
-  }
+
 }
 
 // Restaurant Hero Info Section uniquement
 .restaurant-hero__info {
   flex: 1;
-  max-width: 70%;
+  max-width: 100%; // Prendre toute la largeur
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   animation: fadeInUp 0.6s ease-out;
+  background: $pink-btn;
 }
 
 .restaurant-hero__title {
   font-family: 'Shrikhand', cursive;
   font-size: 3rem;
-  background: linear-gradient(120deg, #e871da 0%, #9c59dc 100%);
+  background: linear-gradient(120deg, #4fd1c5 0%, $secondary 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -515,6 +517,8 @@
   gap: 2.5rem;
   flex-wrap: wrap;
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  
 
   > * {
     animation: fadeInUp 0.8s ease-out;
@@ -556,19 +560,13 @@
 .restaurant-hero__address {
   animation-delay: 0.2s;
   
-  &::before {
-    content: '📍';
-    margin-right: 0.3rem;
-  }
+
 }
 
 .restaurant-hero__style {
   animation-delay: 0.4s;
   
-  &::before {
-    content: '🏷️';
-    margin-right: 0.3rem;
-  }
+
 }
 
 // Animation pour cette section
@@ -632,6 +630,59 @@
   padding: 0 2rem;
 }
 
+/* Forcer les sections menu en colonne sur téléphone */
+@media (max-width: 768px) {
+  .menu-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+  }
+
+  .menu-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+    padding: 0;
+  }
+
+  /* Retirer toute marge/padding gauche des menu-section en mobile */
+  .menu-section {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Afficher le prix sous le titre dans les cartes (mobile) */
+  .menu-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+    
+    .menu-card__content {
+      width: 100%;
+      margin-bottom: 0.4rem;
+    }
+
+    .menu-card__price {
+      width: 100%;
+      text-align: left;
+      margin-top: 0.25rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* cacher la grande ombre/hover trop lourde sur mobile */
+    &:hover {
+      transform: none;
+      box-shadow: 0 2px 8px rgba(156, 89, 220, 0.06);
+    }
+  }
+
+  /* Masquer les descriptions des plats en mode mobile */
+  .menu-card__description {
+    display: none !important;
+  }
+}
+
 // Menu Sections
 .menu-section {
 
@@ -682,14 +733,19 @@
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; // Empêche le check de dépasser à droite quand il est caché
 
-  &:hover {
+  /* 1. Déclenchement au SURVOL ou avec la classe .selected (au CLIC) */
+  &:hover,
+  &.selected {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(156, 89, 220, 0.15);
 
     .menu-card__check {
-      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0); // Glisse vers sa position normale à gauche
+      transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0s;
     }
   }
 
@@ -719,6 +775,7 @@
     text-align: right;
   }
 
+  /* 2. État par défaut du bloc check (masqué à droite) */
   &__check {
     position: absolute;
     right: 0;
@@ -729,8 +786,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* Masqué et décalé de 100% à droite */
+    opacity: 0;
+    visibility: hidden;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+
+    /* Transition de retour (quand on enlève la souris) */
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0.4s;
 
     i {
       color: #fff;
@@ -738,6 +801,7 @@
     }
   }
 }
+
 
 // Order Section
 .order-section {
@@ -779,7 +843,7 @@
 }
 
 .modal__content {
-  background: #fff;
+  background: $pink-btn;
   border-radius: 1.5rem;
   width: 90%;
   max-width: 600px;
@@ -787,6 +851,13 @@
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(156, 89, 220, 0.20);
   animation: modalSlideIn 0.3s ease-out;
+  margin: 2rem auto;
+  #restaurantForm{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+
+  }
 }
 
 .modal__header {
@@ -798,7 +869,7 @@
   
   h2 {
     font-family: 'Shrikhand', cursive;
-    color: #9c59dc;
+    color: $secondary;
     margin: 0;
     font-size: 1.8rem;
   }
@@ -1040,32 +1111,4 @@
   }
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
 
-.modal__content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}

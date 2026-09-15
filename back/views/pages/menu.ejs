@@ -10,7 +10,7 @@
         <img src="/images/<%= restaurant.image %>" alt="<%= restaurant.name %>" class="restaurant-hero__image">
         <div class="restaurant-hero__content">
           <div class="restaurant-hero__info">
-            <h1 class="restaurant-hero__title"><%= restaurant.name %></h1>
+            <h2 class="restaurant-hero__title"><%= restaurant.name %></h2>
             <p class="restaurant-hero__description"><%= restaurant.description %></p>
             <div class="restaurant-hero__details">
               <span class="restaurant-hero__address">
@@ -23,9 +23,7 @@
               </span>
             </div>
           </div>
-          <div class="restaurant-hero__heart">
-            <i class="far fa-heart"></i>
-          </div>
+
         </div>
       </section>
 
@@ -48,7 +46,9 @@
                 <div class="menu-card__check">
                   <i class="fas fa-check"></i>
                 </div>
+                
               </div>
+              
             <% }) %>
           </div>
         </section>
@@ -70,6 +70,7 @@
                 <div class="menu-card__check">
                   <i class="fas fa-check"></i>
                 </div>
+                
               </div>
             <% }) %>
           </div>
@@ -92,13 +93,16 @@
                 <div class="menu-card__check">
                   <i class="fas fa-check"></i>
                 </div>
+                
               </div>
             <% }) %>
           </div>
         </section>
 
       </div>
+        
               <div class="order-section">
+                <p id="total">total: 00 euros</p>
           <button class="order-btn">Commander</button>
         </div>
     </main>

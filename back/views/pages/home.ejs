@@ -21,7 +21,7 @@
         <div class="home-hero__content">
           <h1 class="home-hero__title">Réservez le menu qui vous convient</h1>
           <p class="home-hero__subtitle">
-            Découvrez des restaurants d'exception, sélectionnés par nos soins.
+            Découvrez des restaurants d'exception, sélectionnés par nos soinsa.
           </p>
           <button id="openModal" class="home-hero__cta">
             <span>Ajoutez votre restaurant</span>
@@ -31,14 +31,14 @@
       
       <nav class="navigation">
         <h2 class="navigation__title">
-          <span class="navigation__title__icon"><i class="fas fa-bolt"></i></span>
+          <span class="navigation__title__icon"></span>
           Une petite faim ? 
         </h2>
         <ol class="navigation__steps">
           <li class="navigation__step">
             <span class="navigation__step__number">1</span>
             <span class="navigation__step__icon"><i class="fas fa-mobile-alt"></i></span>
-            <span class="navigation__step__text">Choisissez un restaurant</span>
+            <span class="">Choisissez un restaurant</span>
           </li>
           <li class="navigation__step">
             <span class="navigation__step__number">2</span>
@@ -54,10 +54,10 @@
       </nav>
 
       <section class="section__restaurant">
-        <h2>Restaurants</h2>
+        <h2>Nos restaurants</h2>
 
         <!-- Container des restaurants -->
-        <div class="restaurant__card_container">
+        <div id="restaurant__card_container">
           <% restaurants.forEach((restaurant) => { %>
             <div class="restaurant__card">
               <a href="/menu/<%= restaurant.id %>">
@@ -68,7 +68,7 @@
                     <p><%= restaurant.city %></p>
                   </div>
                   <div class="restaurant__card__heart">
-                    <span class="menu__card__news">Nouveau</span>
+                    <span class="menu__card__news"><%= restaurant.style %></span>
                     <i class="far fa-heart"></i>
                   </div>
                 </div>
@@ -162,17 +162,31 @@
     <!-- MODAL -->
 <div id="restaurantModal" class="modal" style="display: none;">
   <div class="modal__content">
-    <span class="modal__close">&times;</span>
-    <h2>Ajouter un restaurant</h2>
+    <div class="modal__header">
+      <h2>Ajouter un restaurant</h2>
+      <span class="modal__close">&times;</span>
+      
+    </div>
     <form id="restaurantForm">
       <label for="name">Nom du restaurant :</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" placeholder="ex: Mon Restaurant" required>
+
+      
+
+      <label for="image">Adresse :</label>
+      <input type="text" id="address" name="address" placeholder="ex: 123 Rue Principale" required>
 
       <label for="city">Ville :</label>
-      <input type="text" id="city" name="city" required>
+      <input type="text" id="city" name="city" placeholder="ex: Paris" required>
 
-      <label for="image">Nom de l’image :</label>
-      <input type="text" id="image" name="image" placeholder="ex: restaurant.jpg" required>
+      <label for="description">Description du restaurant :</label>
+      <input type="text" id="description" name="description" placeholder="ex: restaurant.jpg" required>
+
+      <label for="image">Style :</label>
+      <input type="text" id="style" name="style" placeholder="ex: Italien" required>
+
+      <label for="image">Image du restaurant :</label>
+      <input type="file" id="image" name="image" placeholder="ex: restaurant.jpg" required>
 
       <button type="submit">Envoyer</button>
     </form>

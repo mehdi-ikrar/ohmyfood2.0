@@ -7,7 +7,11 @@ import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 
 const app = express();  // Initialiser Express
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(cors({
   origin: "*"
 }));
@@ -33,5 +37,5 @@ app.use(router);
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 oCoffee app started at http://localhost:${PORT}`);
+  console.log(`🚀 oCosffsee app started at http://localhost:${PORT}`);
 });

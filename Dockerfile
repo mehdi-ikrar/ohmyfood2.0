@@ -1,22 +1,14 @@
 FROM node:18
 
-# Dossier de travail
 WORKDIR /app
 
-# Installation de npm
-RUN npm install -g npm
+COPY . .
 
-# Copie des fichiers nécessaires
-COPY back/package*.json ./
+# Déplace le dossier de travail dans le sous-dossier 'back'
+WORKDIR /app/back
 
-# Installation des dépendances
+# Installe les dépendances
 RUN npm install
 
-# Copie du reste du code
-COPY back/ .
-
-# Expose le port de l'apps
-EXPOSE 3000
-
-# Commande de démarrage
-CMD ["npm", "start"]
+# Lance directement l'application avec la commande npm start
+CMD [ "npm", "start" ]
