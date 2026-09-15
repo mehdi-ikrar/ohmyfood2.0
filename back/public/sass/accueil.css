@@ -553,7 +553,7 @@ body a:link {
 .restaurant-hero__title {
   font-family: "Shrikhand", cursive;
   font-size: 3rem;
-  background: linear-gradient(120deg, #e871da 0%, #9c59dc 100%);
+  background: linear-gradient(120deg, #4fd1c5 0%, rgb(153, 226, 208) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -788,13 +788,17 @@ body a:link {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  /* 1. Déclenchement au SURVOL ou avec la classe .selected (au CLIC) */
 }
-.menu-card:hover {
+.menu-card:hover, .menu-card.selected {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(156, 89, 220, 0.15);
 }
-.menu-card:hover .menu-card__check {
+.menu-card:hover .menu-card__check, .menu-card.selected .menu-card__check {
+  opacity: 1;
+  visibility: visible;
   transform: translateX(0);
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0s;
 }
 .menu-card__content {
   flex: 1;
@@ -818,6 +822,9 @@ body a:link {
   min-width: 60px;
   text-align: right;
 }
+.menu-card {
+  /* 2. État par défaut du bloc check (masqué à droite) */
+}
 .menu-card__check {
   position: absolute;
   right: 0;
@@ -828,8 +835,12 @@ body a:link {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Masqué et décalé de 100% à droite */
+  opacity: 0;
+  visibility: hidden;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  /* Transition de retour (quand on enlève la souris) */
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0.4s;
 }
 .menu-card__check i {
   color: #fff;

@@ -468,7 +468,7 @@
 .restaurant-hero__title {
   font-family: 'Shrikhand', cursive;
   font-size: 3rem;
-  background: linear-gradient(120deg, #e871da 0%, #9c59dc 100%);
+  background: linear-gradient(120deg, #4fd1c5 0%, $secondary 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -733,14 +733,19 @@
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; // Empêche le check de dépasser à droite quand il est caché
 
-  &:hover {
+  /* 1. Déclenchement au SURVOL ou avec la classe .selected (au CLIC) */
+  &:hover,
+  &.selected {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(156, 89, 220, 0.15);
 
     .menu-card__check {
-      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0); // Glisse vers sa position normale à gauche
+      transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0s;
     }
   }
 
@@ -770,6 +775,7 @@
     text-align: right;
   }
 
+  /* 2. État par défaut du bloc check (masqué à droite) */
   &__check {
     position: absolute;
     right: 0;
@@ -780,8 +786,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* Masqué et décalé de 100% à droite */
+    opacity: 0;
+    visibility: hidden;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+
+    /* Transition de retour (quand on enlève la souris) */
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0.4s;
 
     i {
       color: #fff;
@@ -789,6 +801,7 @@
     }
   }
 }
+
 
 // Order Section
 .order-section {

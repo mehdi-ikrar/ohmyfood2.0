@@ -1,39 +1,35 @@
 // Sélectionne toutes les icônes de cœur
-const heartIcons = document.querySelectorAll('.fa-heart');
+const menuCards = document.querySelectorAll('.menu-card');
+const orderBtn = document.getElementsByClassName('order-btn')[0];
 
-
-// Applique les comportements
-heartIcons.forEach(icon => {
-    // Style par défaut
-    icon.style.fontSize = '2em';
-    icon.style.color = 'black';
-    icon.style.cursor = 'pointer';
-    icon.style.opacity = '0.8'; // Optionnel, ajusté pour correspondre au SCSS
-
-    icon.parentElement.addEventListener('click', event => {
-        event.preventDefault(); // Empêche la redirection
-    });
-    // Ajoute un effet au survol
-    icon.addEventListener('mouseover', () => {
-        icon.style.transition = 'opacity 0.5s ease-in-out, font-weight 0.5s'; // Transition douce
-        icon.style.opacity = '1'; // Pleine opacité
-        icon.style.fontWeight = 'bold'; // Texte gras
-
-        // Applique le dégradé en tant que texte coloré
-        icon.style.background = 'linear-gradient(0deg, #FFC0CB 0%, #800080 100%)'; // Dégradé rose à violet
-        icon.style.webkitBackgroundClip = 'text';
-        icon.style.webkitTextFillColor = 'transparent'; // Texte transparent pour afficher le dégradé
-    });
-
-    // Rétablit le style par défaut après le survol
-    icon.addEventListener('click', () => {
-        icon.style.opacity = '1';
-        icon.style.fontWeight = 'bold';
-        icon.style.background = 'linear-gradient(0deg, #FFC0CB 0%, #800080 100%)';
-        icon.style.webkitBackgroundClip = 'text';
-        icon.style.webkitTextFillColor = 'transparent';
+// 2. Écouter le clic sur chaque carte
+menuCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // 3. Basculer la classe 'selected' (l'ajoute si elle n'y est pas, la retire si elle y est)
+        card.classList.toggle('selected');
+        updateTotal();
     });
 });
+orderBtn.addEventListener('click', () => {
+    alert("Votre commande a été passée !");
+
+});
+function updateTotal() {
+  let total = 0;
+  const selectedPrices = document.querySelectorAll('.menu-card.selected .menu-card__price');
+  const totalElement = document.getElementById('total');
+
+  selectedPrices.forEach(priceElement => {
+    // Ce code s'exécute pour CHAQUE prix trouvé
+    total += parseFloat(priceElement.textContent.replace('€', ''));
+  });
+
+  totalElement.textContent = `total: ${total} euros`;
+  console.log(total);
+
+}
+
+
 
 // 1. On récupère le bouton et la modale grâce à leurs ID
 const openBtn = document.getElementById('openModal');
