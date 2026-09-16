@@ -317,7 +317,7 @@ body a:link {
 }
 .header__menu .header__logo__content .header__brand {
   font-family: "Shrikhand", cursive;
-  font-size: 5rem;
+  font-size: 4rem;
   color: #9c59dc;
   letter-spacing: 2px;
 }
@@ -493,9 +493,10 @@ body a:link {
 }
 .restaurant-hero__image {
   width: 100%;
-  height: 300px;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
+  display: block;
 }
 .restaurant-hero__content {
   background: #fff;
@@ -553,28 +554,37 @@ body a:link {
 .restaurant-hero__title {
   font-family: "Shrikhand", cursive;
   font-size: 3rem;
+  margin: 0;
+  padding: 1rem 1rem 1.75rem;
+  background: linear-gradient(rgb(156, 89, 220), rgb(232, 113, 218) 100%);
+  text-shadow: 0 2px 4px rgba(156, 89, 220, 0.1);
+  position: relative;
+  text-align: center;
+}
+
+.restaurant-hero__title-text {
+  display: inline-block;
   background: linear-gradient(120deg, #4fd1c5 0%, rgb(153, 226, 208) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 0 0 1.5rem 0;
-  text-shadow: 0 2px 4px rgba(156, 89, 220, 0.1);
   position: relative;
 }
-.restaurant-hero__title::after {
+.restaurant-hero__title-text::after {
   content: "";
   position: absolute;
-  bottom: -0.5rem;
-  left: 0;
+  bottom: -0.35rem;
+  left: 15%;
+  transform: translateX(-50%);
   width: 6rem;
   height: 4px;
-  background: linear-gradient(120deg, #e871da 0%, #99e2d0 100%);
+  background: linear-gradient(120deg, #e871da 5%, #99e2d0 100%);
   border-radius: 2px;
 }
 
 .restaurant-hero__description {
   font-size: 1.3rem;
-  color: #555;
+  color: rgb(153, 226, 208);
   margin-bottom: 2rem;
   line-height: 1.6;
   font-weight: 400;
@@ -666,7 +676,7 @@ body a:link {
   }
   .restaurant-hero__description {
     font-size: 1.1rem;
-    text-align: center;
+    color: #fff;
   }
   .restaurant-hero__details {
     flex-direction: column;
@@ -780,6 +790,7 @@ body a:link {
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 2px 16px rgba(156, 89, 220, 0.08);
+  background: linear-gradient(120deg, #4fd1c5 0%, #99e2d0 100%);
   padding: 1.5rem;
   display: flex;
   align-items: center;
@@ -791,7 +802,6 @@ body a:link {
   /* 1. Déclenchement au SURVOL ou avec la classe .selected (au CLIC) */
 }
 .menu-card:hover, .menu-card.selected {
-  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(156, 89, 220, 0.15);
 }
 .menu-card:hover .menu-card__check, .menu-card.selected .menu-card__check {
@@ -800,8 +810,12 @@ body a:link {
   transform: translateX(0);
   transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s linear 0s;
 }
+.menu-card:hover .menu-card__price, .menu-card.selected .menu-card__price {
+  margin-right: 4rem;
+}
 .menu-card__content {
   flex: 1;
+  min-width: 0;
 }
 .menu-card__title {
   font-size: 1.3rem;
@@ -814,6 +828,9 @@ body a:link {
   color: #666;
   margin: 0;
   line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .menu-card__price {
   font-size: 1.2rem;
@@ -821,6 +838,7 @@ body a:link {
   color: #e871da;
   min-width: 60px;
   text-align: right;
+  transition: margin-right 0.4s ease;
 }
 .menu-card {
   /* 2. État par défaut du bloc check (masqué à droite) */
