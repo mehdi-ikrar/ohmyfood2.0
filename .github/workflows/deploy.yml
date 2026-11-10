@@ -2,7 +2,7 @@ name: CI/CD Backend Render
 
 on:
   push:
-    branches: [ googlecloud ] # Remplace par master si ta branche principale s'appelle master
+    branches: [ googlecloud ]
 
 jobs:
   build-and-test:
@@ -17,7 +17,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: 📦 Installer les dépendances
+      - name: 📦 Installer les dépendances (dans back)
+        working-directory: ./back
         run: npm install
 
   deploy:
